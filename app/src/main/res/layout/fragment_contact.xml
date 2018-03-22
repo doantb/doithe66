@@ -1,0 +1,1427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/banner_muathe123"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="01."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Vietcombank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Dương Thị Minh Tuyển"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="0301000383905"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà Nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="02."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Maritimebank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="03101017130483"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nam Hà Nội (Hà nội)"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="03."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Á Châu"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="220784949"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="04."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Techcombank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="19030521236660"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="05."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Saccombank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="020043620933"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="06."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: VPBank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="104779158"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="07."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: MBbank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="0630105085005"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="08."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Ngân hàng thương mại cổ phần Đông Á"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="0110281348"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="09."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: BIDV"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Cao Thị Dưỡng"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="21610000413868"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="10."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: AgriBank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="1500.216.975.164"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Hà nội"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="11."
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Ngân hàng nhận tiền: Vietinbank"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chủ tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Nguyễn Thị Quyên"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Số tài khoản"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="104007112678"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/common_radius"
+                android:text="- Chi nhánh"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center_vertical"
+                android:padding="@dimen/small_radius"
+                android:text="Chương Dương"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:gravity="center"
+            android:text="Thông tin liên Hệ"
+            android:textColor="@color/color_action_bar"
+            android:textSize="18sp"
+            style="@style/basetext"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_company_100px"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="start|center"
+                android:padding="@dimen/small_radius"
+                android:text="Công ty Cổ Phần Thanh toán Hưng Hà"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/small_radius"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_location_96px"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="start|center"
+                android:padding="@dimen/small_radius"
+                android:text="Địa chỉ văn phòng: Tầng 2, B50, Lô 6, KĐT Định Công - Hoàng Mai - Hà Nội"
+                style="@style/basetext"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/small_radius"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_email_100px"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="start|center"
+                android:padding="@dimen/small_radius"
+                android:text="Email: hotro@muathe123.vn"
+                style="@style/basetext"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/small_radius"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="1"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_ifone_100px"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="start|center"
+                android:padding="@dimen/small_radius"
+                android:text="Điện thoại: 024.6657.3055 - 0974.696.346"
+                style="@style/basetext"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
+

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl_item_tran"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:id="@+id/a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_35dp"
+        android:layout_marginRight="@dimen/margin_35dp"
+        android:layout_marginTop="@dimen/large_margin"
+        >
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="3dp"
+            card_view:cardCornerRadius="@dimen/large_padding"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <RelativeLayout
+                    android:layout_width="300dp"
+                    android:layout_height="100dp"
+                    android:padding="@dimen/large_margin"
+                    >
+
+                    <TextView
+                        android:id="@+id/txt_name_transaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Giao dịch 1"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_time_transaction"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txt_name_transaction"
+                        android:layout_marginLeft="@dimen/large_margin"
+                        android:layout_marginTop="@dimen/xnormal_radius_12dp"
+                        android:text="29/11/2017"
+                        android:textSize="13sp"
+                        />
+
+                    <TextView
+                        android:id="@+id/txt_price_tran"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/height_30dp"
+                        android:text="50.000đ"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_tran_detail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/a"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/large_radius_10dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/bg_detail_tran_history"
+        android:orientation="vertical"
+        android:padding="@dimen/xsmall_radius_5dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_type_transaction_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Loại giao dịch:"
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_type_history_detail_transaction"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="nạp tiền tài khoản"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_contact_email_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Email: "
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_email_history_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="doantb95@gmail.com"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_money_transaction_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Mệnh giá: "
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_amount_history_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="50,000"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_type_card_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Loại thẻ: "
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_typecard_history_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="VinaPhone"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_done_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Trạng thái: "
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_status_history_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="thành công"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_contact_phone_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Số điện thoại: "
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_phone_history_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="0989006188"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.4"
+                android:src="@drawable/ic_discount_grey"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1.4"
+                android:gravity="start|center"
+                android:text="Chiết khấu: "
+                android:textColor="@color/textview_see"
+                android:textStyle="italic"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_discount_history_detail"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/small_radius"
+                android:layout_weight="2"
+                android:gravity="start|center"
+                android:text="5%"
+                style="@style/basetext"
+                />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-65dp"
+        android:layout_marginTop="@dimen/margin_43dp"
+        android:layout_toRightOf="@+id/a"
+        android:background="@drawable/bg_cart"
+        >
+
+        <ImageView
+            android:id="@+id/img_drop_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_arrow_drop_down_red"
+            />
+
+        <ImageView
+            android:id="@+id/img_drop_up"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_arrow_drop"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
+</RelativeLayout>

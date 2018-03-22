@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_radius"
+        app:cardBackgroundColor="@color/item_recycle_buycard_done"
+        app:cardCornerRadius="4dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/height_44dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/xsmall_radius_5dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="start|center"
+                android:text="Thẻ"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+
+            <TextView
+                android:id="@+id/tv_count_card"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                style="@style/basetext"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                android:layout_weight="12"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số Serial : "
+                        />
+                    <TextView
+                        android:id="@+id/txt_serial"
+                        android:text="532523523"
+                        android:textColor="@color/color_green"
+                        android:textSize="16sp"
+                        style="@style/basetext"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mã thẻ : "
+                        />
+                    <TextView
+                        android:id="@+id/tv_pass_card_done"
+                        android:text="532523523525353"
+                        android:textColor="@color/color_green"
+                        android:textSize="16sp"
+                        style="@style/basetext"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/btn_copy_spin_code"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="3"
+                android:background="#1F000000"
+                android:padding="@dimen/xsmall_radius_5dp"
+                android:text="Copy"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                />
+
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

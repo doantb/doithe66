@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ln_item_card_all_history"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_logo"
+        android:padding="@dimen/height_30dp"
+        >
+
+        <ImageView
+            android:id="@+id/img_history_item"
+            android:layout_width="@dimen/height_55dp"
+            android:layout_height="@dimen/height_55dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/large_radius_10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_ifone_100px"
+            />
+
+        <TextView
+            android:id="@+id/tv_namehistory_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/img_history_item"
+            android:text="Lịch sử nạp tiền tài khoản"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ln_item_expand_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_radius"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:id="@+id/ln_fr_day_item_history"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/action_bar_height"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/small_radius"
+                    android:padding="@dimen/normal_padding"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_calendar_50px"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_tungay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:text="Từ ngày:"
+                        android:textColor="@color/unselected_indicator"
+                        style="@style/basetext"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_from_day_item_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv_tungay"
+                        android:gravity="start|center"
+                        android:textSize="16sp"
+                        style="@style/basetext"
+                        />
+
+                    <ImageView
+                        android:layout_width="@dimen/normal_margin_25dp"
+                        android:layout_height="@dimen/normal_margin_25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/normal_padding"
+                        android:src="@drawable/ic_arrow_drop_down"
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/small_radius"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@color/color_view_1dp"
+                />
+
+            <LinearLayout
+                android:id="@+id/ln_to_day_item_history"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/action_bar_height"
+                android:layout_marginTop="@dimen/xsmall_radius_5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/small_radius"
+                    android:padding="@dimen/normal_padding"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_calendar_50px"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_denngay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="start|center_vertical"
+                        android:text="Đến ngày:"
+                        android:textColor="@color/unselected_indicator"
+                        style="@style/basetext"
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_to_day_item_history"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/tv_denngay"
+                        android:gravity="start|center"
+                        android:textSize="16sp"
+                        style="@style/basetext"
+                        />
+
+                    <ImageView
+                        android:layout_width="@dimen/normal_margin_25dp"
+                        android:layout_height="@dimen/normal_margin_25dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="@dimen/normal_padding"
+                        android:src="@drawable/ic_arrow_drop_down"
+                        />
+
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln_numberphone_item_history"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:layout_margin="@dimen/xsmall_radius_5dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/ic_iphonex_50px"
+                />
+
+            <EditText
+                android:id="@+id/edt_phone_loadmoney_item_history"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="start|center"
+                android:hint="Số điện thoại"
+                android:inputType="number"
+                android:padding="@dimen/_8sdp"
+                android:textSize="16sp"
+                style="@style/text_view_profile"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ln_chose_price_item_history"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_button_primary"
+            android:layout_margin="@dimen/xsmall_radius_5dp"
+            android:orientation="horizontal"
+            >
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:padding="@dimen/_2sdp"
+                android:src="@drawable/ic_counting_gray_50px"
+                />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                >
+
+                <Spinner
+                    android:id="@+id/spn_loadmoney_item_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:padding="@dimen/xsmall_radius_5dp"
+                    style="@style/text_view_profile"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ok_all_history"
+            android:layout_height="@dimen/height_button_primary"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/normal_padding"
+            android:layout_marginTop="@dimen/xsmall_radius_5dp"
+            android:background="@drawable/bg_button_primary"
+            android:gravity="center"
+            android:padding="@dimen/large_radius_10dp"
+            android:text="OK"
+            android:textColor="@android:color/white"
+            style="@style/basetext"
+            />
+    </LinearLayout>
+</LinearLayout>

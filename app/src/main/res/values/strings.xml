@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Mua Thẻ 123</string>
+    <string name="number_picker_formatter">%02d</string>
+    <string name="muoinghin">10.000đ</string>
+    <string name="haimuoi">20.000đ</string>
+    <string name="nammuoi">50.000đ</string>
+    <string name="mottram">100.000đ</string>
+    <string name="haitram">200.000đ</string>
+    <string name="namtram">500.000đ</string>
+    <string name="bamuoi">30.000đ</string>
+    <string name="batram">300.000đ</string>
+    <string name="server_client_id">791178904646-38c9cg0se5ud02c72gicj54umbtod724.apps.googleusercontent.com</string>
+    <string name="web_client_id">791178904646-sdpfts4934td49nns0l857nnuaei259e.apps.googleusercontent.com</string>
+    <string name="pref_key_transition_time" translatable="false">pref_key_transition_time</string>
+    <string name="accessibility_service_description">This service records pop ups sent by your mobile operator, and saves them in USSDService App. It is absolutely safe to use.</string>
+</resources>

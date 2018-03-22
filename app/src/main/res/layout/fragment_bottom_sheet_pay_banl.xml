@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <!--<android.support.v7.widget.CardView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:cardCornerRadius="10dp"-->
+    <!--android:elevation="@dimen/_8sdp"-->
+    <!--&gt;-->
+    <!---->
+    <!--</android.support.v7.widget.CardView>-->
+    <include
+        layout="@layout/action_bar"
+        ></include>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_below="@+id/btn_click_choose_bank"
+            android:id="@+id/ll_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/ic_own_50px"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:text="Thanh toán qua tài khoản Muathe123"
+                android:textSize="16sp"
+                />
+            <android.support.v7.widget.CardView
+                android:layout_width="200dp"
+                android:layout_height="@dimen/edt_padding_login"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/small_radius"
+                app:cardCornerRadius="@dimen/xsmall_radius_5dp"
+                >
+
+                <RelativeLayout
+                    android:id="@+id/rl_ban_the"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/rb_item_banthe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:clickable="false"
+                        />
+
+                    <ImageView
+                        android:id="@+id/img_item_recycle_pay_bank"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/rb_item_banthe"
+                        android:background="@color/color_action_bar_main"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/logo"
+                        />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txt_pay_with"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:drawableLeft="@drawable/ic_bank_50px"
+                android:drawablePadding="6dp"
+                android:gravity="center_vertical"
+                android:text="Hoặc lựa chọn thanh toán qua ngân hàng"
+                android:textSize="16sp"
+                />
+        </LinearLayout>
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ll_top"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_pay_bank"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/small_radius"
+                    android:nestedScrollingEnabled="false"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+        <Button
+            android:id="@+id/btn_click_choose_bank"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/bg_button_primary"
+            android:text="OK"
+            android:textColor="@android:color/white"
+            />
+        <include layout="@layout/my_progess_bar"></include>
+    </RelativeLayout>
+</LinearLayout>

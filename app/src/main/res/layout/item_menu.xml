@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_item_menu"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/rl_item_menu">
+
+    <ImageView
+        android:id="@+id/img_item_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/android_tablet_48px" />
+
+    <TextView
+        android:id="@+id/txt_title_item_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:text="Đổi thẻ cào thành tiền" />
+</LinearLayout>

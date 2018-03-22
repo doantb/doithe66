@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light_gray"
+    android:orientation="vertical"
+    >
+    <include
+        layout="@layout/action_bar"
+        ></include>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <include layout="@layout/action_bar"></include>
+        <LinearLayout
+            android:id="@+id/ll_enter_old_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/large_radius_10dp"
+            android:layout_marginRight="@dimen/large_radius_10dp"
+            android:layout_marginTop="@dimen/large_padding"
+            android:background="@drawable/bg_create_new_pass"
+            android:orientation="vertical"
+            android:padding="@dimen/normal_padding"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_radius_10dp"
+                android:text="Nhập mật khẩu cũ"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/edt_old_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/large_margin"
+                android:layout_marginTop="@dimen/large_margin"
+                android:background="@drawable/bg_tranferent"
+                android:hint="Mật khẩu cũ"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/normal_padding"
+                android:paddingLeft="@dimen/large_padding"
+                android:paddingRight="@dimen/normal_padding"
+                android:paddingTop="@dimen/normal_padding"
+                android:textColorHint="@android:color/darker_gray"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/large_radius_10dp"
+            android:layout_marginRight="@dimen/large_radius_10dp"
+            android:layout_marginTop="@dimen/large_padding"
+            android:background="@drawable/bg_create_new_pass"
+            android:orientation="vertical"
+            android:padding="@dimen/normal_padding"
+
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_radius_10dp"
+                android:text="Nhập mật khẩu mới"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+            <EditText
+                android:id="@+id/edt_new_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/large_margin"
+                android:layout_marginTop="@dimen/large_margin"
+                android:background="@drawable/bg_tranferent"
+                android:hint="Mật khẩu mới"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/normal_padding"
+                android:paddingLeft="@dimen/large_padding"
+                android:paddingRight="@dimen/normal_padding"
+                android:paddingTop="@dimen/normal_padding"
+                android:textColorHint="@android:color/darker_gray"
+                />
+        </LinearLayout>
+        <Button
+            android:id="@+id/btn_creatNewAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/normal_margin_25dp"
+            android:background="@drawable/bg_button_primary"
+            android:padding="@dimen/large_radius_10dp"
+            android:text="Tạo mật khẩu"
+            android:textColor="@android:color/white"
+            />
+    </LinearLayout>
+    <include layout="@layout/my_progess_bar"></include>
+</RelativeLayout>

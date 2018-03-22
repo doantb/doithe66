@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_register"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/action_bar"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/_35sdp"
+        android:layout_marginRight="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/xsmall_radius_5dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo_muathe123"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/small_radius"
+        android:layout_marginRight="@dimen/small_radius"
+        android:layout_marginTop="@dimen/xsmall_radius_5dp"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="42dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/xsmall_radius_5dp"
+            >
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="Số lượng:"
+                android:textColor="@color/color_green"
+                />
+
+            <TextView
+                android:id="@+id/tv_number_card_success"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center"
+                android:text="1 thẻ"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_type_card_success"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.3"
+                android:gravity="start|center_vertical"
+                android:text="Viettel"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="42dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/xsmall_radius_5dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="Mệnh giá:"
+                android:textColor="@color/color_green"
+                />
+
+            <TextView
+                android:id="@+id/tv_price_success"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="300.000 đ"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="42dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/xsmall_radius_5dp"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="Email:"
+                android:textColor="@color/color_green"
+                />
+
+            <TextView
+                android:id="@+id/tv_email_check_success"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="start|center_vertical"
+                android:text="doantb95@gmail.com"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/xsmall_radius_5dp"
+            android:text="Mã Thẻ :"
+            android:textColor="@color/color_green"
+            android:textSize="18sp"
+            style="@style/basetext"
+            />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycle_seri_card_done"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/xsmall_radius_5dp"
+                    android:nestedScrollingEnabled="false"
+                    >
+                </android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:id="@+id/txt_thank_you"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="@dimen/xsmall_radius_5dp"
+                    android:gravity="center"
+                    android:padding="@dimen/small_radius"
+                    android:text="Rất hân hạnh được phục vụ quý khách! "
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    />
+
+                <Button
+                    android:id="@+id/btn_ok_success"
+                    android:layout_width="wrap_content"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="@dimen/xsmall_radius_5dp"
+                    android:background="@drawable/bg_register_button"
+                    android:text="OK"
+                    android:textColor="@android:color/white"
+                    />
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
+</LinearLayout>
