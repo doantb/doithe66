@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,17 +25,20 @@ import vn.doithe66.doithe66.HomeActivity;
 import vn.doithe66.doithe66.R;
 import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.Utils.SharedPrefs;
+import vn.doithe66.doithe66.Utils.Utils;
 import vn.doithe66.doithe66.config.ConfigRetrofitApi;
 import vn.doithe66.doithe66.config.InterfaceAPI;
 import vn.doithe66.doithe66.model.RegisterMDResult;
 
 import static vn.doithe66.doithe66.Utils.Constant.FULL_NAME;
+import static vn.doithe66.doithe66.Utils.Constant.PASS_LV1;
+import static vn.doithe66.doithe66.Utils.Constant.PASS_LV2;
 
 /**
  * Created by Windows 10 Now on 1/26/2018.
  */
 
-public class CreateNewPassActivity extends BaseActivity implements View.OnClickListener {
+public class CreateNewPassActivity extends BaseActivity {
     @BindView(R.id.ab_img_button_back)
     ImageButton mAbImgButtonBack;
     @BindView(R.id.ab_txt_title_action_bar)
@@ -43,6 +47,10 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
     ImageView mAbImgButtonConfirm;
     @BindView(R.id.my_progess_bar)
     RelativeLayout mMyProgessBar;
+    @BindView(R.id.edt_old_password_lv1)
+    EditText edtOldPasswordLv1;
+    @BindView(R.id.ll_enter_old_pass_lv1)
+    LinearLayout llEnterOldPassLv1;
     private EditText edtNewPass;
     private EditText edtOldPass;
     private onHandleClickChecked mChecked;
@@ -51,6 +59,7 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
     private LinearLayout llEnterOldPass;
     private Button btnCreateAccoount;
     private View view;
+    private String fromPass;
 
     public void setChecked(onHandleClickChecked checked) {
         mChecked = checked;
@@ -75,7 +84,13 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
         mAbTxtTitleActionBar.setText("Tạo mật khẩu mới");
         Intent intent = getIntent();
         final String fullName = intent.getStringExtra(FULL_NAME);
+        fromPass = intent.getStringExtra(Constant.TYPE_PASS);
         token = intent.getStringExtra(Constant.KEY_TOKEN);
+        if (fromPass.equalsIgnoreCase(PASS_LV2)) {
+            llEnterOldPassLv1.setVisibility(View.VISIBLE);
+            edtOldPass.setHint("Nhập mật khẩu cấp 2 cũ");
+            edtNewPass.setHint("Nhập mật khẩu cấp 2 mới");
+        }
         if (intent.getIntExtra("key_acccess", 0) == 2) {
             llEnterOldPass.setVisibility(View.GONE);
             btnCreateAccoount.setVisibility(View.VISIBLE);
@@ -92,11 +107,13 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
                     (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+        btnCreateAccoount.setOnClickListener(mOnProfileClickListener);
     }
 
     private View.OnClickListener mOnProfileClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+            Utils.closeKeyboard(getApplicationContext(),edtNewPass.getWindowToken());
             mMyProgessBar.setVisibility(View.VISIBLE);
             if (edtNewPass.getText().toString().equals("")) {
                 Toast.makeText(CreateNewPassActivity.this, "Vui lòng nhập password",
@@ -112,23 +129,20 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
     };
 
     @Override
-    public void onClick(View view) {
-
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
 
     }
 
-    @OnClick({ R.id.ab_img_button_back, R.id.ab_img_button_confirm })
+    @OnClick({R.id.ab_img_button_back, R.id.ab_img_button_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ab_img_button_back:
+                super.onBackPressed();
                 break;
             case R.id.ab_img_button_confirm:
+                finish();
                 break;
         }
     }
@@ -139,22 +153,39 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
 
     private void newPassRetrofit(String oldPass, String newPass) {
         Retrofit retrofit = ConfigRetrofitApi.getInstance(token);
-        //
-        retrofit.create(InterfaceAPI.class)
-                .createNewPass(oldPass, newPass)
-                .enqueue(new Callback<RegisterMDResult>() {
-                    @Override
-                    public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
-                        jsonResult = response.body();
-                        chooseRepCode(token);
-                    }
+        if (fromPass.equalsIgnoreCase(PASS_LV1)) {
+            retrofit.create(InterfaceAPI.class)
+                    .createNewPassLv1(oldPass, newPass)
+                    .enqueue(new Callback<RegisterMDResult>() {
+                        @Override
+                        public void onResponse(Call<RegisterMDResult> call,
+                                               Response<RegisterMDResult> response) {
+                            jsonResult = response.body();
+                            chooseRepCode(token);
+                        }
 
-                    @Override
-                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
+                        @Override
+                        public void onFailure(Call<RegisterMDResult> call, Throwable t) {
 
-                    }
-                });
+                        }
+                    });
+        } else {
+            retrofit.create(InterfaceAPI.class)
+                    .createNewPassLv2(edtOldPasswordLv1.getText().toString(), oldPass, newPass)
+                    .enqueue(new Callback<RegisterMDResult>() {
+                        @Override
+                        public void onResponse(Call<RegisterMDResult> call,
+                                               Response<RegisterMDResult> response) {
+                            jsonResult = response.body();
+                            chooseRepCode(token);
+                        }
+
+                        @Override
+                        public void onFailure(Call<RegisterMDResult> call, Throwable t) {
+
+                        }
+                    });
+        }
     }
 
     private void chooseRepCode(String token) {
@@ -167,13 +198,12 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
                 break;
             case 2:
                 Toast.makeText(this, "Mật khẩu cũ không đúng", Toast.LENGTH_SHORT).show();
-                mMyProgessBar.setVisibility(View.GONE);
                 break;
             case -1:
                 Toast.makeText(this, "Đăng nhập hết hạn", Toast.LENGTH_SHORT).show();
-                mMyProgessBar.setVisibility(View.GONE);
                 break;
         }
+        mMyProgessBar.setVisibility(View.GONE);
     }
 
     private void loginWithNewGmail(final String token, String fullName, String passWord) {
@@ -187,9 +217,9 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
                 .enqueue(new Callback<RegisterMDResult>() {
                     @Override
                     public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
+                                           Response<RegisterMDResult> response) {
                         jsonResult = response.body();
-                        Toast.makeText(CreateNewPassActivity.this, jsonResult.getMessage() +"", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateNewPassActivity.this, jsonResult.getMessage() + "", Toast.LENGTH_SHORT).show();
                         saveAccessToken(jsonResult.getToken());
                         startActivity(HomeActivity.class);
                     }
@@ -200,6 +230,7 @@ public class CreateNewPassActivity extends BaseActivity implements View.OnClickL
                     }
                 });
     }
+
     private void saveAccessToken(String token) {
         SharedPrefs.getInstance().put(Constant.ACCESS_TOKEN, token);
     }

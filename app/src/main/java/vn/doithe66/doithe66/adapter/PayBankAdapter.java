@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RadioButton;
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import vn.doithe66.doithe66.R;
 import vn.doithe66.doithe66.model.BankType;
@@ -44,7 +46,7 @@ public class PayBankAdapter extends RecyclerView.Adapter<PayBankAdapter.PayBankV
 
     @Override
     public void onBindViewHolder(PayBankViewHoder holder, int position) {
-        Picasso.with(context)
+        Glide.with(context)
                 .load(lisBankType.get(position).getLogoOfBank())
                 .into(holder.imgRecyclePayBank);
         BankType bankType = lisBankType.get(position);

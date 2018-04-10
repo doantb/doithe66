@@ -16,6 +16,7 @@ public class InfoUserEdit implements Serializable {
     private String bankCode;
     private int providerId;
     private String providerCode;
+    private String passlv2;
 
     private String AccountFee;
 
@@ -68,6 +69,14 @@ public class InfoUserEdit implements Serializable {
         this.typeOfPay = sTypeLoadMoney;
         this.price = sChosePrice;
         this.email = sEmail;
+    }
+
+    public String getPasslv2() {
+        return passlv2;
+    }
+
+    public void setPasslv2(String passlv2) {
+        this.passlv2 = passlv2;
     }
 
     public String getProviderCode() {

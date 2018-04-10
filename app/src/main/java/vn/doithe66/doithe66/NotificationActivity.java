@@ -50,7 +50,7 @@ public class NotificationActivity extends BaseActivity {
                 mWebView.loadUrl(intent.getStringExtra(Constant.URL_PAY_BANK));
                 mHomeTxtTitleActionBar.setText("Thanh toán bằng ngân hàng");
             } else {
-                mWebView.loadUrl("https://muathe123.vn/tin-tuc-1.html");
+                mWebView.loadUrl("https://doithe66.com/tin-tuc-1.html");
             }
         }
         mWebView.setWebViewClient(mWebViewClient);
@@ -67,7 +67,7 @@ public class NotificationActivity extends BaseActivity {
         //            mWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
         //        }
         mWebView.setWebChromeClient(new WebChromeClient());
-        setCancel(this, mNotifiImgCancel);
+        setCancel(mNotifiImgCancel);
     }
 
     @Override

@@ -7,8 +7,7 @@
         android:id="@+id/action_bar_app"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_46sdp"
-        android:background="@color/color_action_bar_main"
-        android:visibility="gone"
+        android:background="@color/colorPrimary"
         >
         <ImageButton
             android:id="@+id/ab_img_button_back"

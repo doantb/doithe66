@@ -29,8 +29,8 @@ public class RegisterPresenterImpl implements RegisterPresenter, OnRegisterFinis
     }
 
     @Override
-    public void register(String user, String phone, String email, String pass) {
-        mInterator.register(user, phone, email, pass, this);
+    public void register(String user, String phone, String email, String pass, String passlv2) {
+        mInterator.register(user, phone, email, pass, passlv2, this);
         mProgessView.showProgess();
     }
 }

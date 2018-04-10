@@ -7,7 +7,7 @@ package vn.doithe66.doithe66.view;
 public interface HistoryFrmView {
     void onErrorPickPhone();
 
-    void toFrmHistoryDetail();
+    void toFrmHistoryDetail(String sMesagge);
 
     void onErorPickDate();
 }

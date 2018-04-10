@@ -1,8 +1,10 @@
 package vn.doithe66.doithe66.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -11,13 +13,17 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import butterknife.BindView;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+
 import vn.doithe66.doithe66.R;
 import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.Utils.SharedPrefs;
+import vn.doithe66.doithe66.Utils.Utils;
+import vn.doithe66.doithe66.activity.BaseActivity;
 import vn.doithe66.doithe66.adapter.SpinnerAdapter;
 import vn.doithe66.doithe66.config.ConfigSpinner;
 import vn.doithe66.doithe66.model.InfoUserEdit;
@@ -53,6 +59,8 @@ public class PayFastFragment extends BaseFragment implements AdapterView.OnItemS
     EditText mFrmPayFastEdtPhone;
     @BindView(R.id.frm_pay_fast_edt_email)
     EditText mFrmPayFastEdtEmail;
+    @BindView(R.id.frm_pay_fast_edt_pass_level2)
+    EditText mFrmPayFastEdtPassLevel2;
     private ArrayList<String> lisChosePriceLoadMoneyFast = new ArrayList<>();
     private ArrayList<String> lisTypeLoadmoney = new ArrayList<>();
     private SpinnerAdapter spinnerAdapterChosePrice;
@@ -95,6 +103,7 @@ public class PayFastFragment extends BaseFragment implements AdapterView.OnItemS
                 onViewClicked();
             }
         });
+        hiddenInputType();
     }
 
     public static PayFastFragment newInstance(String token) {
@@ -107,6 +116,7 @@ public class PayFastFragment extends BaseFragment implements AdapterView.OnItemS
 
     public void onViewClicked() {
         String sEdtPhone = mFrmPayFastEdtPhone.getText().toString().trim();
+        String sPassLevel2 = mFrmPayFastEdtPassLevel2.getText().toString().trim();
         String sTypeLoadMoney = "";
         // neu chon vi tri thu 0, hoac vi tri thu 1 thi khoi tao lai sChosePrice
         if (mSpnLoadTypeOfPay.getSelectedItemPosition() == 0) {
@@ -121,6 +131,9 @@ public class PayFastFragment extends BaseFragment implements AdapterView.OnItemS
 
         if (sEdtPhone.isEmpty()) {
             mFrmPayFastEdtPhone.setError("Vui lòng điền số điện thoại !");
+        } else if (sPassLevel2.isEmpty()) {
+            Toast.makeText(getActivity(), "Vui lòng nhập mật khẩu cấp 2 !", Toast.LENGTH_SHORT)
+                    .show();
         } else if (sTypeLoadMoney.isEmpty() || sChosePrice.isEmpty()) {
             Toast.makeText(getActivity(), "Vui lòng chọn đầy đủ thông tin !", Toast.LENGTH_SHORT)
                     .show();
@@ -132,6 +145,7 @@ public class PayFastFragment extends BaseFragment implements AdapterView.OnItemS
             infoUserEdit.setTypeOfPay(sTypeLoadMoney);
             infoUserEdit.setNumberPhone(sEdtPhone);
             infoUserEdit.setEmail(SharedPrefs.getInstance().get(EMAIL, String.class));
+            infoUserEdit.setPasslv2(sPassLevel2);
             Bundle bundle = new Bundle();
             bundle.putInt(FROM_FRAGMENT, PAY_FAST_FRAGMENT);
             bundle.putSerializable(INFO_USER_EDIT, infoUserEdit);

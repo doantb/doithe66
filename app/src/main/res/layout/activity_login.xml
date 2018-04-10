@@ -29,7 +29,7 @@
                 android:layout_height="100dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="@dimen/_50sdp"
-                android:src="@drawable/logo"
+                android:src="@drawable/iconlogo_doithe66"
                 />
             <LinearLayout
                 android:id="@+id/ll_login"

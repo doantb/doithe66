@@ -4,8 +4,10 @@ import Decoder.BASE64Decoder;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,10 +17,11 @@ import vn.doithe66.doithe66.config.InterfaceAPI;
 import vn.doithe66.doithe66.model.InfoUserEdit;
 import vn.doithe66.doithe66.model.RegisterMDResult;
 import vn.doithe66.doithe66.model.ResultBanThe;
+import vn.doithe66.doithe66.model.ResultCardDoithe;
 
 import static vn.doithe66.doithe66.Utils.Constant.PAY_CARD_FRAGMENT;
 import static vn.doithe66.doithe66.Utils.Constant.PAY_FAST_FRAGMENT;
-import static vn.doithe66.doithe66.Utils.Constant.PAY_SLOW_FRAGMENT;
+import static vn.doithe66.doithe66.Utils.Constant.TAKE_MONEY;
 
 /**
  * Created by Windows 10 Now on 1/25/2018.
@@ -32,26 +35,26 @@ public class PayBankIteratorImpl implements PayBankIterator {
 
     @Override
     public void getLinkPayBank(int positionFragment, String token, InfoUserEdit infoUserEdit,
-            String url, OnGetUrlFinishedListener onGetUrlFinishedListener) {
+                               String url, OnGetUrlFinishedListener onGetUrlFinishedListener) {
         this.mUserEdit = infoUserEdit;
         this.token = token;
         this.url = url;
         switch (positionFragment) {
             case PAY_CARD_FRAGMENT:
-                getLinkApiByBank(onGetUrlFinishedListener);
+//                getLinkApiByBank(onGetUrlFinishedListener);
                 break;
             case PAY_FAST_FRAGMENT:
-                getLinkApiFast(onGetUrlFinishedListener);
+//                getLinkApiFast(onGetUrlFinishedListener);
                 break;
-            case PAY_SLOW_FRAGMENT:
-                getLinkApiSlow(onGetUrlFinishedListener);
+            case TAKE_MONEY:
+//                getLinkApiSlow(onGetUrlFinishedListener);
                 break;
         }
     }
 
     @Override
     public void getListCard(int positionFragment, String token, InfoUserEdit infoUserEdit,
-            OnGetListCardFinishedListener onGetListCardFinishedListener) {
+                            OnGetListCardFinishedListener onGetListCardFinishedListener) {
         this.mUserEdit = infoUserEdit;
         this.token = token;
         this.url = url;
@@ -62,89 +65,110 @@ public class PayBankIteratorImpl implements PayBankIterator {
             case PAY_FAST_FRAGMENT:
                 getLinkApiFastBanThe(onGetListCardFinishedListener);
                 break;
-            case PAY_SLOW_FRAGMENT:
+            case TAKE_MONEY:
                 getLinkApiSlowBanThe(onGetListCardFinishedListener);
                 break;
         }
     }
 
-    private void getLinkApiByBank(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
-        if (token.isEmpty()) {
-            retrofit = ConfigRetrofitApi.getInstance();
-        } else {
-            retrofit = ConfigRetrofitApi.getInstance(token);
-        }
-        retrofit.create(InterfaceAPI.class)
-                .payCardByBank(mUserEdit.getBankCode(), mUserEdit.getEmail(),
-                        mUserEdit.getProviderId(), stringToInt(mUserEdit.getPrice()),
-                        String.valueOf(mUserEdit.getCountBuy()))
-                .enqueue(new Callback<RegisterMDResult>() {
-                    @Override
-                    public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
-                        if (response != null) {
-                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
-                        }
-                    }
+//    private void getLinkApiByBank(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
+//        retrofit = ConfigRetrofitApi.getInstance(token);
+//        retrofit.create(InterfaceAPI.class)
+//                .buyCodeCard(String.valueOf(mUserEdit.getProviderId()), mUserEdit.getPrice(),
+//                        mUserEdit.getCountBuy(), mUserEdit.getPasslv2())
+//                .enqueue(new Callback<RegisterMDResult>() {
+//                    @Override
+//                    public void onResponse(Call<RegisterMDResult> call,
+//                                           Response<RegisterMDResult> response) {
+//                        if (response != null) {
+//                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
+//                        onGetUrlFinishedListener.onError();
+//                    }
+//                });
+//    }
 
-                    @Override
-                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
-                        onGetUrlFinishedListener.onError();
-                    }
-                });
-    }
-
-    private void getLinkApiFast(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
-        if (token.isEmpty()) {
-            retrofit = ConfigRetrofitApi.getInstance();
-        } else {
-            retrofit = ConfigRetrofitApi.getInstance(token);
-        }
-        retrofit.create(InterfaceAPI.class)
-                .payCardFast(mUserEdit.getBankCode(), mUserEdit.getNumberPhone(),
-                        stringToInt(mUserEdit.getPrice()), mUserEdit.getEmail(),
-                        mUserEdit.getTypeOfPay())
-                .enqueue(new Callback<RegisterMDResult>() {
-                    @Override
-                    public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
-                        if (response != null) {
-                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
-                        onGetUrlFinishedListener.onError();
-                    }
-                });
-    }
-
-    private void getLinkApiSlow(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
-        if (token.isEmpty()) {
-            retrofit = ConfigRetrofitApi.getInstance();
-        } else {
-            retrofit = ConfigRetrofitApi.getInstance(token);
-        }
-        retrofit.create(InterfaceAPI.class)
-                .payCardViettelSlow(mUserEdit.getBankCode(), mUserEdit.getNumberPhone(),
-                        stringToInt(mUserEdit.getPrice()), mUserEdit.getEmail(),
-                        mUserEdit.getTypeOfPay())
-                .enqueue(new Callback<RegisterMDResult>() {
-                    @Override
-                    public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
-                        if (response != null) {
-                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
-                        onGetUrlFinishedListener.onError();
-                    }
-                });
-    }
+//    private void getLinkApiByBank(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
+//        if (token.isEmpty()) {
+//            retrofit = ConfigRetrofitApi.getInstance();
+//        } else {
+//            retrofit = ConfigRetrofitApi.getInstance(token);
+//        }
+//        retrofit.create(InterfaceAPI.class)
+//                .payCardByBank(mUserEdit.getBankCode(), mUserEdit.getEmail(),
+//                        mUserEdit.getProviderId(), stringToInt(mUserEdit.getPrice()),
+//                        String.valueOf(mUserEdit.getCountBuy()))
+//                .enqueue(new Callback<RegisterMDResult>() {
+//                    @Override
+//                    public void onResponse(Call<RegisterMDResult> call,
+//                            Response<RegisterMDResult> response) {
+//                        if (response != null) {
+//                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
+//                        onGetUrlFinishedListener.onError();
+//                    }
+//                });
+//    }
+//
+//    private void getLinkApiFast(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
+//        if (token.isEmpty()) {
+//            retrofit = ConfigRetrofitApi.getInstance();
+//        } else {
+//            retrofit = ConfigRetrofitApi.getInstance(token);
+//        }
+//        retrofit.create(InterfaceAPI.class)
+//                .payCardFast(mUserEdit.getBankCode(), mUserEdit.getNumberPhone(),
+//                        stringToInt(mUserEdit.getPrice()), mUserEdit.getEmail(),
+//                        mUserEdit.getTypeOfPay())
+//                .enqueue(new Callback<RegisterMDResult>() {
+//                    @Override
+//                    public void onResponse(Call<RegisterMDResult> call,
+//                            Response<RegisterMDResult> response) {
+//                        if (response != null) {
+//                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
+//                        onGetUrlFinishedListener.onError();
+//                    }
+//                });
+//    }
+//
+//    private void getLinkApiSlow(final OnGetUrlFinishedListener onGetUrlFinishedListener) {
+//        if (token.isEmpty()) {
+//            retrofit = ConfigRetrofitApi.getInstance();
+//        } else {
+//            retrofit = ConfigRetrofitApi.getInstance(token);
+//        }
+//        retrofit.create(InterfaceAPI.class)
+//                .payCardViettelSlow(mUserEdit.getBankCode(), mUserEdit.getNumberPhone(),
+//                        stringToInt(mUserEdit.getPrice()), mUserEdit.getEmail(),
+//                        mUserEdit.getTypeOfPay())
+//                .enqueue(new Callback<RegisterMDResult>() {
+//                    @Override
+//                    public void onResponse(Call<RegisterMDResult> call,
+//                            Response<RegisterMDResult> response) {
+//                        if (response != null) {
+//                            onGetUrlFinishedListener.onSuccess(response.body().getLink());
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<RegisterMDResult> call, Throwable t) {
+//                        onGetUrlFinishedListener.onError();
+//                    }
+//                });
+//    }
 
     private void getLinkApiByBankCard(
             final OnGetListCardFinishedListener onGetListCardFinishedListener) {
@@ -153,42 +177,17 @@ public class PayBankIteratorImpl implements PayBankIterator {
         } else {
             retrofit = ConfigRetrofitApi.getInstance(token);
             retrofit.create(InterfaceAPI.class)
-                    .payCardByBankBanThe(mUserEdit.getProviderCode()
-                            + ":"
-                            + stringToInt(mUserEdit.getPrice())
-                            + ":"
-                            + String.valueOf(mUserEdit.getCountBuy()))
-                    .enqueue(new Callback<ResultBanThe>() {
+                    .buyCodeCard(mUserEdit.getProviderId(), mUserEdit.getPrice(), mUserEdit.getCountBuy(), mUserEdit.getPasslv2())
+                    .enqueue(new Callback<ResultCardDoithe>() {
                         @Override
-                        public void onResponse(Call<ResultBanThe> call,
-                                Response<ResultBanThe> response) {
+                        public void onResponse(Call<ResultCardDoithe> call,
+                                               Response<ResultCardDoithe> response) {
                             if (response != null) {
-                                ResultBanThe mResultBanThe = response.body();
-                                if (mResultBanThe != null) {
-//                                    Log.e("card", response.body().getLinlistCardsk());
-//                                    Log.e("card", mResultBanThe.getMessage());
-//                                    Log.e("card",
-//                                            String.valueOf(mResultBanThe.getErrorCode()));
+                                ResultCardDoithe resultCardDoithe = response.body();
+                                if (resultCardDoithe != null) {
                                     // lay ra listcard tu Api tra ve de giai ma :
-                                    String sListCards = response.body().getLinlistCardsk();
-                                    if (sListCards != null
-                                            && !sListCards.isEmpty()
-                                            && !sListCards.equalsIgnoreCase("")) {
-                                        try {
-                                            sListCards = Decrypt(token, sListCards);
-//                                            Log.e("card", sListCards);
-//                                            Log.e("card", mResultBanThe.getMessage());
-//                                            Log.e("card",
-//                                                    String.valueOf(mResultBanThe.getErrorCode()));
-                                            onGetListCardFinishedListener.onGetListCardSuccess(
-                                                    sListCards, mResultBanThe.getMessage());
-                                        } catch (Exception e) {
-                                            e.printStackTrace();
-                                        }
-                                    } else {
-                                        onGetListCardFinishedListener.onGetListCardSuccess(
-                                                sListCards, mResultBanThe.getMessage());
-                                    }
+                                    onGetListCardFinishedListener.onGetListCardSuccess(
+                                            resultCardDoithe, resultCardDoithe.getMessage());
                                 } else {
                                     onGetListCardFinishedListener.onErrorGetListCard();
                                 }
@@ -196,7 +195,7 @@ public class PayBankIteratorImpl implements PayBankIterator {
                         }
 
                         @Override
-                        public void onFailure(Call<ResultBanThe> call, Throwable t) {
+                        public void onFailure(Call<ResultCardDoithe> call, Throwable t) {
                             onGetListCardFinishedListener.onErrorGetListCard();
                         }
                     });
@@ -210,27 +209,17 @@ public class PayBankIteratorImpl implements PayBankIterator {
         } else {
             retrofit = ConfigRetrofitApi.getInstance(token);
             retrofit.create(InterfaceAPI.class)
-                    .payCardFastBanThe(mUserEdit.getNumberPhone()
+                    .payMoneyForMobile(mUserEdit.getNumberPhone()
                             + ":"
-                            + stringToInt(mUserEdit.getPrice())
-                            + ":"
-                            + mUserEdit.getTypeOfPay())
+                            + stringToInt(mUserEdit.getPrice()), mUserEdit.getPasslv2())
                     .enqueue(new Callback<ResultBanThe>() {
                         @Override
                         public void onResponse(Call<ResultBanThe> call,
-                                Response<ResultBanThe> response) {
+                                               Response<ResultBanThe> response) {
                             if (response.body() != null) {
-//                                Log.e("card", response.body().getLinlistCardsk());
-//                                Log.e("card", response.body().getMessage());
-//                                Log.e("card",
-//                                        String.valueOf(response.body().getErrorCode()));
                                 ResultBanThe mResultBanThe = response.body();
-                                if (mResultBanThe.getMessage() != null) {
-                                    onGetListCardFinishedListener.onGetListCardSuccess("",
-                                            mResultBanThe.getMessage());
-                                } else {
-                                    onGetListCardFinishedListener.onErrorGetListCard();
-                                }
+                                onGetListCardFinishedListener.onPayMoneyForMobile(mResultBanThe.getMessage());
+
                             }
                         }
 
@@ -258,15 +247,15 @@ public class PayBankIteratorImpl implements PayBankIterator {
                     .enqueue(new Callback<ResultBanThe>() {
                         @Override
                         public void onResponse(Call<ResultBanThe> call,
-                                Response<ResultBanThe> response) {
+                                               Response<ResultBanThe> response) {
                             if (response.body() != null) {
                                 ResultBanThe mResultBanThe = response.body();
-                                if (mResultBanThe.getMessage() != null) {
-                                    onGetListCardFinishedListener.onGetListCardSuccess("",
-                                            mResultBanThe.getMessage());
-                                } else {
-                                    onGetListCardFinishedListener.onErrorGetListCard();
-                                }
+//                                if (mResultBanThe.getMessage() != null) {
+//                                    onGetListCardFinishedListener.onGetListCardSuccess("",
+//                                            mResultBanThe.getMessage());
+//                                } else {
+//                                    onGetListCardFinishedListener.onErrorGetListCard();
+//                                }
                             }
                         }
 

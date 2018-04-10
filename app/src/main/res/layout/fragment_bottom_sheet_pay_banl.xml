@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
     <!--<android.support.v7.widget.CardView-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
@@ -13,20 +12,130 @@
     <!--&gt;-->
     <!---->
     <!--</android.support.v7.widget.CardView>-->
-    <include
-        layout="@layout/action_bar"
-        ></include>
+    <include layout="@layout/action_bar"></include>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_info_buy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <TextView
+                android:id="@+id/txt_info_credit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:drawableLeft="@drawable/ic_info_outline_red_400_36dp"
+                android:drawablePadding="@dimen/_5sdp"
+                android:gravity="center_vertical"
+                android:text="Thông tin thanh toán"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/ln_info_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_info_credit"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_credit_card" />
+
+                <TextView
+                    android:id="@+id/txt_title_type_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/normal_padding"
+                    android:text="Loại thẻ : "
+                    android:textColor="@color/color_green" />
+
+                <TextView
+                    android:id="@+id/txt_type_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="Vietnam Mobile "
+                    android:textColor="@color/color_black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ln_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_info_credit"
+                android:layout_marginLeft="@dimen/large_radius_10dp"
+                android:layout_toRightOf="@id/ln_info_buy"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_add_alert" />
+
+                <TextView
+                    android:id="@+id/txt_title_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/xsmall_radius_5dp"
+                    android:text="Số lượng : "
+                    android:textColor="@color/color_green" />
+
+                <TextView
+                    android:id="@+id/txt_count_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10sp"
+                    android:textColor="@color/color_black" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ln_info_buy"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/xsmall_radius_5dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_attach_money" />
+
+                <TextView
+                    android:id="@+id/txt_title_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/large_radius_10dp"
+                    android:text="Mệnh giá : "
+                    android:textColor="@color/color_green" />
+
+                <TextView
+                    android:id="@+id/txt_price_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10.00d"
+                    android:textColor="@color/color_black" />
+            </LinearLayout>
+        </RelativeLayout>
+
         <LinearLayout
-            android:layout_below="@+id/btn_click_choose_bank"
             android:id="@+id/ll_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:layout_below="@+id/btn_click_choose_bank"
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -34,30 +143,28 @@
                 android:drawableLeft="@drawable/ic_own_50px"
                 android:drawablePadding="6dp"
                 android:gravity="center_vertical"
-                android:text="Thanh toán qua tài khoản Muathe123"
-                android:textSize="16sp"
-                />
+                android:text="Thanh toán qua tài khoản Doithe66"
+                android:textSize="16sp" />
+
             <android.support.v7.widget.CardView
                 android:layout_width="200dp"
                 android:layout_height="@dimen/edt_padding_login"
                 android:layout_gravity="center"
-                android:layout_margin="@dimen/small_radius"
-                app:cardCornerRadius="@dimen/xsmall_radius_5dp"
-                >
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/small_radius"
+                app:cardCornerRadius="@dimen/xsmall_radius_5dp">
 
                 <RelativeLayout
                     android:id="@+id/rl_ban_the"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    >
+                    android:layout_height="match_parent">
 
                     <RadioButton
                         android:id="@+id/rb_item_banthe"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:clickable="false"
-                        />
+                        android:clickable="false" />
 
                     <ImageView
                         android:id="@+id/img_item_recycle_pay_bank"
@@ -67,55 +174,56 @@
                         android:layout_toRightOf="@+id/rb_item_banthe"
                         android:background="@color/color_action_bar_main"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/logo"
-                        />
+                        android:src="@drawable/iconlogo_doithe66" />
 
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
-            <TextView
-                android:id="@+id/txt_pay_with"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:drawableLeft="@drawable/ic_bank_50px"
-                android:drawablePadding="6dp"
-                android:gravity="center_vertical"
-                android:text="Hoặc lựa chọn thanh toán qua ngân hàng"
-                android:textSize="16sp"
-                />
+            <!--<TextView-->
+            <!--android:id="@+id/txt_pay_with"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:drawableLeft="@drawable/ic_bank_50px"-->
+            <!--android:drawablePadding="6dp"-->
+            <!--android:gravity="center_vertical"-->
+            <!--android:text="Hoặc lựa chọn thanh toán qua ngân hàng"-->
+            <!--android:textSize="16sp"-->
+            <!--/>-->
         </LinearLayout>
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/ll_top"
-            >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+        <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/ll_top"-->
+        <!--&gt;-->
+        <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--&gt;-->
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recycle_pay_bank"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/small_radius"
-                    android:nestedScrollingEnabled="false"
-                    >
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/recycle_pay_bank"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/small_radius"-->
+        <!--android:nestedScrollingEnabled="false"-->
+        <!--&gt;-->
 
-                </android.support.v7.widget.RecyclerView>
+        <!--</android.support.v7.widget.RecyclerView>-->
 
-            </RelativeLayout>
-        </android.support.v4.widget.NestedScrollView>
+        <!--</RelativeLayout>-->
+        <!--</android.support.v4.widget.NestedScrollView>-->
         <Button
             android:id="@+id/btn_click_choose_bank"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_below="@+id/rl_info_buy"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/bg_button_primary"
-            android:text="OK"
-            android:textColor="@android:color/white"
-            />
+            android:text="Tiếp tục"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white" />
+
         <include layout="@layout/my_progess_bar"></include>
     </RelativeLayout>
 </LinearLayout>

@@ -147,7 +147,6 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
-                                android:layout_marginBottom="@dimen/_40sdp"
                                 android:layout_marginTop="@dimen/_20sdp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
@@ -169,6 +168,31 @@
                                     android:padding="@dimen/_8sdp"
                                     style="@style/edit_text_custom"
                                     />
+                            </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginBottom="@dimen/_40sdp"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:src="@drawable/ic_own_50px" />
+
+                                <EditText
+                                    android:id="@+id/frm_pay_fast_edt_pass_level2"
+                                    style="@style/edit_text_custom"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_15sdp"
+                                    android:layout_weight="6"
+                                    android:hint="Nhập mật khẩu cấp 2"
+                                    android:padding="@dimen/_8sdp" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>

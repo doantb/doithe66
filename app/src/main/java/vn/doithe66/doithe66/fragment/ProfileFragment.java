@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.activity.CreateNewPassActivity;
 import vn.doithe66.doithe66.model.UserInfo;
 
@@ -40,7 +41,7 @@ public class ProfileFragment extends BaseFragment {
     public static ProfileFragment newInstance(UserInfo userInfo) {
         ProfileFragment profileFragment = new ProfileFragment();
         Bundle args = new Bundle();
-        args.putSerializable(USER_INFO, userInfo);
+        args.putParcelable(USER_INFO, userInfo);
         profileFragment.setArguments(args);
         return profileFragment;
     }
@@ -54,7 +55,7 @@ public class ProfileFragment extends BaseFragment {
     protected void init(View mRoot, Bundle savedInstanceState) throws ParseException {
         Bundle bundle = getArguments();
         if (bundle != null) {
-            mUserInfo = (UserInfo) bundle.getSerializable(USER_INFO);
+            mUserInfo = (UserInfo) bundle.getParcelable(USER_INFO);
         }
         mTxtSurplus.setText(mUserInfo.getSoDuKhaDung()+ " " + "đ");
         mTxtCreateDate.setText(makeDate(mUserInfo.getCreateDate()));
@@ -65,8 +66,10 @@ public class ProfileFragment extends BaseFragment {
 
     @OnClick(R.id.frm_profile_edit_info)
     public void onViewClicked() {
-        Intent intent = new Intent(getActivity(), CreateNewPassActivity.class);
-        startActivity(intent);
+        ForgetPassFragmentDialog forgetPassFragmentDialog = ForgetPassFragmentDialog.newInstance(Constant.PROFILE_ACTIVITY);
+        forgetPassFragmentDialog.show(getActivity().getSupportFragmentManager(),
+                "forgetPassFragmentDialog");
+        forgetPassFragmentDialog.setCancelable(true);
     }
     private String makeDate(String date) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

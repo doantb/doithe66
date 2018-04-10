@@ -20,16 +20,54 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 #### -- Picasso --
- -keep com.squareup.picasso.**
+# -keep com.squareup.picasso.**
 
  #### -- OkHttp --
 
- -keep com.squareup.okhttp.internal.**
+# -keep com.squareup.okhttp.internal.**
 
  #### -- Apache Commons --
 
- -keep org.apache.commons.logging.**
+# -keep org.apache.commons.logging.**
 
  -keep class com.bumptech.glide.**{ *; }
  -keepnames class com.bumptech.glide.Glide
  -keepnames class com.squareup.picasso.Picasso
+ -keepclassmembers class * implements android.os.Parcelable {
+     static ** CREATOR;
+ }
+
+ # Workaround for ProGuard not recognizing dontobfuscate
+ # https://speakerdeck.com/chalup/proguard
+ -dontobfuscate
+ -dontoptimize
+ -optimizations !code/allocation/variable
+
+ -keep class butterknife.** { *; }
+ -dontwarn butterknife.internal.**
+ -keep class **$$ViewBinder { *; }
+
+ -keepclasseswithmembernames class * {
+     @butterknife.* <fields>;
+ }
+
+ -keepclasseswithmembernames class * {
+     @butterknife.* <methods>;
+ }
+
+ -dontwarn retrofit.**
+ -keep class retrofit.** { *; }
+ -keepattributes Signature
+ -keepattributes Exceptions
+
+ -keepattributes Signature
+ -keepattributes *Annotation*
+ -keep class okhttp3.** { *; }
+ -keep interface okhttp3.** { *; }
+ -dontwarn okhttp3.**
+ -dontnote okhttp3.**
+
+ # Okio
+ -keep class sun.misc.Unsafe { *; }
+ -dontwarn java.nio.file.*
+ -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement

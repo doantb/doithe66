@@ -88,6 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_below="@+id/tv_tungay"
+                        android:text="Chọn ngày"
                         android:gravity="start|center"
                         android:textSize="16sp"
                         style="@style/basetext"
@@ -146,6 +147,7 @@
                         />
 
                     <TextView
+                        android:text="Chọn ngày"
                         android:id="@+id/tv_to_day_item_history"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -181,6 +183,7 @@
             >
 
             <ImageView
+                android:id="@+id/img_genaral"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"

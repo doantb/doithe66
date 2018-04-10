@@ -157,7 +157,7 @@
                     android:background="@drawable/bg_edit_login"
                     android:drawableLeft="@drawable/ic_lock"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:hint="Mật khẩu"
+                    android:hint="Nhập mật khẩu"
                     android:imeOptions="actionDone"
                     android:maxLines="1"
                     android:padding="@dimen/_15sdp"
@@ -166,7 +166,26 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     />
-
+                <EditText
+                    android:id="@+id/register_txt_pass_lv2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/edt_user_name"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/bg_edit_login"
+                    android:drawableLeft="@drawable/ic_lock"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:hint="Nhập mật khẩu cấp 2"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:padding="@dimen/_15sdp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/color_white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    />
                 <Button
                     android:id="@+id/register_btn"
                     android:layout_width="match_parent"

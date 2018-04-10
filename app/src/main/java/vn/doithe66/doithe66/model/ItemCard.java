@@ -2,13 +2,14 @@ package vn.doithe66.doithe66.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by Windows 10 Now on 1/10/2018.
  */
 
-public class ItemCard implements Parcelable{
+public class ItemCard implements Parcelable {
     private String nameHomeNetWork;
     private int imgLogo;
     private boolean isWatch = false;
@@ -17,6 +18,7 @@ public class ItemCard implements Parcelable{
     private String providerCode;
     private ArrayList<Amount> mAmounts;
     private ArrayList<String> arrSpin;
+    private double disCountDouble;
 
     public ItemCard(String nameHomeNetWork, int imgLogo) {
         this.nameHomeNetWork = nameHomeNetWork;
@@ -40,68 +42,6 @@ public class ItemCard implements Parcelable{
 
     }
 
-    protected ItemCard(Parcel in) {
-        nameHomeNetWork = in.readString();
-        imgLogo = in.readInt();
-        isWatch = in.readByte() != 0;
-        disCount = in.readString();
-        providerId = in.readInt();
-        providerCode = in.readString();
-        arrSpin = in.createStringArrayList();
-    }
-
-    public static final Creator<ItemCard> CREATOR = new Creator<ItemCard>() {
-        @Override
-        public ItemCard createFromParcel(Parcel in) {
-            return new ItemCard(in);
-        }
-
-        @Override
-        public ItemCard[] newArray(int size) {
-            return new ItemCard[size];
-        }
-    };
-
-    public String getProviderCode() {
-        return providerCode;
-    }
-
-    public void setProviderCode(String providerCode) {
-        this.providerCode = providerCode;
-    }
-
-    public ArrayList<String> getArrSpin() {
-        return arrSpin;
-    }
-
-    public void setArrSpin(ArrayList<String> arrSpin) {
-        this.arrSpin = arrSpin;
-    }
-
-    public ArrayList<Amount> getAmounts() {
-        return mAmounts;
-    }
-
-    public void setAmounts(ArrayList<Amount> amounts) {
-        mAmounts = amounts;
-    }
-
-    public String getDisCount() {
-        return disCount;
-    }
-
-    public void setDisCount(String disCount) {
-        this.disCount = disCount;
-    }
-
-    public boolean isWatch() {
-        return isWatch;
-    }
-
-    public void setWatch(boolean watch) {
-        isWatch = watch;
-    }
-
     public String getNameHomeNetWork() {
         return nameHomeNetWork;
     }
@@ -110,12 +50,12 @@ public class ItemCard implements Parcelable{
         this.nameHomeNetWork = nameHomeNetWork;
     }
 
-    public int getProviderId() {
-        return providerId;
+    public double getDisCountDouble() {
+        return disCountDouble;
     }
 
-    public void setProviderId(int providerId) {
-        this.providerId = providerId;
+    public void setDisCountDouble(double disCountDouble) {
+        this.disCountDouble = disCountDouble;
     }
 
     public int getImgLogo() {
@@ -126,14 +66,52 @@ public class ItemCard implements Parcelable{
         this.imgLogo = imgLogo;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) return false;
+    public boolean isWatch() {
+        return isWatch;
+    }
 
-        ItemCard itemCompare = (ItemCard) obj;
-        if (itemCompare.getNameHomeNetWork().equals(this.getNameHomeNetWork())) return true;
+    public void setWatch(boolean watch) {
+        isWatch = watch;
+    }
 
-        return false;
+    public String getDisCount() {
+        return disCount;
+    }
+
+    public void setDisCount(String disCount) {
+        this.disCount = disCount;
+    }
+
+    public int getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(int providerId) {
+        this.providerId = providerId;
+    }
+
+    public String getProviderCode() {
+        return providerCode;
+    }
+
+    public void setProviderCode(String providerCode) {
+        this.providerCode = providerCode;
+    }
+
+    public ArrayList<Amount> getmAmounts() {
+        return mAmounts;
+    }
+
+    public void setmAmounts(ArrayList<Amount> mAmounts) {
+        this.mAmounts = mAmounts;
+    }
+
+    public ArrayList<String> getArrSpin() {
+        return arrSpin;
+    }
+
+    public void setArrSpin(ArrayList<String> arrSpin) {
+        this.arrSpin = arrSpin;
     }
 
     @Override
@@ -142,13 +120,39 @@ public class ItemCard implements Parcelable{
     }
 
     @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(nameHomeNetWork);
-        parcel.writeInt(imgLogo);
-        parcel.writeByte((byte) (isWatch ? 1 : 0));
-        parcel.writeString(disCount);
-        parcel.writeInt(providerId);
-        parcel.writeString(providerCode);
-        parcel.writeStringList(arrSpin);
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.nameHomeNetWork);
+        dest.writeInt(this.imgLogo);
+        dest.writeByte(this.isWatch ? (byte) 1 : (byte) 0);
+        dest.writeString(this.disCount);
+        dest.writeInt(this.providerId);
+        dest.writeString(this.providerCode);
+        dest.writeTypedList(this.mAmounts);
+        dest.writeStringList(this.arrSpin);
+        dest.writeDouble(this.disCountDouble);
     }
+
+    protected ItemCard(Parcel in) {
+        this.nameHomeNetWork = in.readString();
+        this.imgLogo = in.readInt();
+        this.isWatch = in.readByte() != 0;
+        this.disCount = in.readString();
+        this.providerId = in.readInt();
+        this.providerCode = in.readString();
+        this.mAmounts = in.createTypedArrayList(Amount.CREATOR);
+        this.arrSpin = in.createStringArrayList();
+        this.disCountDouble = in.readDouble();
+    }
+
+    public static final Creator<ItemCard> CREATOR = new Creator<ItemCard>() {
+        @Override
+        public ItemCard createFromParcel(Parcel source) {
+            return new ItemCard(source);
+        }
+
+        @Override
+        public ItemCard[] newArray(int size) {
+            return new ItemCard[size];
+        }
+    };
 }

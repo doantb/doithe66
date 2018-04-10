@@ -10,19 +10,28 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import java.util.ArrayList;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import vn.doithe66.doithe66.HomeActivity;
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.AutoLogin;
+import vn.doithe66.doithe66.Utils.ConfigJson;
 import vn.doithe66.doithe66.Utils.Constant;
+import vn.doithe66.doithe66.Utils.SharedPrefs;
 import vn.doithe66.doithe66.adapter.RvCardBuySuccessAdapter;
 import vn.doithe66.doithe66.model.InfoUserEdit;
 import vn.doithe66.doithe66.model.ResultCard;
+import vn.doithe66.doithe66.model.ResultCardDoithe;
+import vn.doithe66.doithe66.model.UserInfo;
 
 /**
  * Created by Windows 10 Now on 1/20/2018.
@@ -46,10 +55,10 @@ public class ResultDetailNoBankActivity extends BaseActivity
     @BindView(R.id.txt_thank_you)
     TextView mTxtThankYou;
 
-    private ArrayList<ResultCard> lisCardSuccess;
     private InfoUserEdit infoUserEdit;
     private RvCardBuySuccessAdapter rvCardBuySuccessAdapter;
-    private String sDecrypt;
+    private ArrayList<ResultCardDoithe.DataBean> lisCardSuccess;
+    private ResultCardDoithe resultCardDoithe;
 
     @Override
     protected int getLayoutId() {
@@ -62,10 +71,9 @@ public class ResultDetailNoBankActivity extends BaseActivity
         Intent intent = getIntent();
         if (intent != null) {
             infoUserEdit = (InfoUserEdit) intent.getSerializableExtra(Constant.USER_INFO);
-            sDecrypt = (String) intent.getStringExtra(Constant.LIST_CARD);
+            resultCardDoithe = intent.getParcelableExtra(Constant.LIST_CARD);
         } else {
             infoUserEdit = null;
-            sDecrypt = null;
         }
         initInfor();
         initRecycleView();
@@ -77,7 +85,8 @@ public class ResultDetailNoBankActivity extends BaseActivity
 
     private void initRecycleView() {
         lisCardSuccess = new ArrayList<>();
-        addListResultCard(sDecrypt);
+        lisCardSuccess = (ArrayList<ResultCardDoithe.DataBean>) resultCardDoithe.getData();
+//        addListResultCard(dataBeans);
         // lay du lieu cho lisCardSuccess
         rvCardBuySuccessAdapter = new RvCardBuySuccessAdapter(this, lisCardSuccess);
         rvCardSuccess.setAdapter(rvCardBuySuccessAdapter);
@@ -99,7 +108,7 @@ public class ResultDetailNoBankActivity extends BaseActivity
         }
     }
 
-    @OnClick({ R.id.btn_ok_success })
+    @OnClick({R.id.btn_ok_success})
     public void onClickButterKnife(View view) {
         switch (view.getId()) {
             case R.id.btn_ok_success:
@@ -109,25 +118,25 @@ public class ResultDetailNoBankActivity extends BaseActivity
         }
     }
 
-    private void addListResultCard(String s) {
-        try {
-            JSONArray jsonArray = new JSONArray(s);
-            lisCardSuccess = new ArrayList<>();
-            for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject explrObject = jsonArray.getJSONObject(i);
-                ResultCard resultCard = new ResultCard();
-                resultCard.setProviderCode(explrObject.optString("PinCode"));
-                resultCard.setSerial(explrObject.optString("Serial"));
-                lisCardSuccess.add(resultCard);
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-    }
+//    private void addListResultCard(String s) {
+//        try {
+//            JSONArray jsonArray = new JSONArray(s);
+//            lisCardSuccess = new ArrayList<>();
+//            for (int i = 0; i < jsonArray.length(); i++) {
+//                JSONObject explrObject = jsonArray.getJSONObject(i);
+//                ResultCard resultCard = new ResultCard();
+//                resultCard.setProviderCode(explrObject.optString("PinCode"));
+//                resultCard.setSerial(explrObject.optString("Serial"));
+//                lisCardSuccess.add(resultCard);
+//            }
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public void onCopy(int position) {
-        ResultCard resultCard = lisCardSuccess.get(position);
+        ResultCardDoithe.DataBean resultCard = lisCardSuccess.get(position);
         setClipBoard(resultCard.getProviderCode());
     }
 
@@ -137,10 +146,4 @@ public class ResultDetailNoBankActivity extends BaseActivity
         manager.setPrimaryClip(clipData);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
 }

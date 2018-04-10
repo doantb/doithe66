@@ -1,6 +1,7 @@
 package vn.doithe66.doithe66.presenter;
 
 import vn.doithe66.doithe66.model.InfoUserEdit;
+import vn.doithe66.doithe66.model.ResultCardDoithe;
 import vn.doithe66.doithe66.view.PayBankView;
 import vn.doithe66.doithe66.view.ProgessView;
 
@@ -39,15 +40,21 @@ public class PayBankPresenterImpl
     }
 
     @Override
-    public void fromAccountMuathe(int positionFragment, String token, InfoUserEdit infoUserEdit) {
+    public void fromAccountDoithe(int positionFragment, String token, InfoUserEdit infoUserEdit) {
         mProgessView.showProgess();
         mPayBankIterator.getListCard(positionFragment, token, infoUserEdit, this);
     }
 
     @Override
-    public void onGetListCardSuccess(String sListCard, String sMessage) {
+    public void onGetListCardSuccess(ResultCardDoithe resultCardDoithe, String sMessage) {
         mProgessView.hideProgess();
-        mPayBankView.onGetListCardSuccess(sListCard, sMessage);
+        mPayBankView.onGetListCardSuccess(resultCardDoithe, sMessage);
+    }
+
+    @Override
+    public void onPayMoneyForMobile(String message) {
+        mProgessView.hideProgess();
+        mPayBankView.onGetMessagePayForMobile(message);
     }
 
     @Override

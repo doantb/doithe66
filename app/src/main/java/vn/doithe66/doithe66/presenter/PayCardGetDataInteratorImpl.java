@@ -43,7 +43,7 @@ public class PayCardGetDataInteratorImpl implements PayCardGetDataInterator {
             sListPrice.add("500.000đ");
         } else {
             ArrayList<Amount> amounts = new ArrayList<>();
-            amounts.addAll(mItemCards.get(j).getAmounts());
+            amounts.addAll(mItemCards.get(j).getmAmounts());
             for (int i = 0; i < amounts.size(); i++) {
                 sListPrice.add(amounts.get(i).getCardName());
             }

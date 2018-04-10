@@ -5,7 +5,7 @@ package vn.doithe66.doithe66.presenter;
  */
 
 public interface OnSeeHistoryFinishListener {
-    public void onSuccess();
+    public void onSuccess(String sMesagge);
 
     public void onErrorNumberPhone();
 

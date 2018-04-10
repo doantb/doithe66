@@ -5,5 +5,5 @@ package vn.doithe66.doithe66.presenter;
  */
 
 public interface RegisterPresenter {
-    public void register(String user, String phone, String email, String pass);
+    public void register(String user, String phone, String email, String pass, String passlv2);
 }

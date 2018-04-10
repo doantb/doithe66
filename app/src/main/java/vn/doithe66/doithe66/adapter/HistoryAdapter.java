@@ -17,19 +17,28 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.ConfigJson;
+import vn.doithe66.doithe66.Utils.Constant;
+import vn.doithe66.doithe66.Utils.SharedPrefs;
+import vn.doithe66.doithe66.Utils.Utils;
 import vn.doithe66.doithe66.model.HistoryDetail;
+import vn.doithe66.doithe66.model.ItemCard;
 import vn.doithe66.doithe66.view.HistoryFrmView;
 
+import static vn.doithe66.doithe66.Utils.Constant.TRANSFER_MONEY;
 import static vn.doithe66.doithe66.Utils.Constant.PAY_CARD_FRAGMENT;
 import static vn.doithe66.doithe66.Utils.Constant.PAY_FAST_FRAGMENT;
-import static vn.doithe66.doithe66.Utils.Constant.PAY_MONEY_FOR_USER;
-import static vn.doithe66.doithe66.Utils.Constant.PAY_SLOW_FRAGMENT;
+import static vn.doithe66.doithe66.Utils.Constant.RECEIVER_MONEY;
+import static vn.doithe66.doithe66.Utils.Constant.TAKE_MONEY;
 
 /**
  * Created by Windows 10 Now on 1/20/2018.
@@ -43,7 +52,8 @@ public class HistoryAdapter
     private Context context;
     private String sFromDay = "";
     private String sToDay = "";
-    private String sFoneItemHistory = "";
+    private String sFindKey = "";
+    private String positionSpinner = "";
     private Calendar calendar;
     private static int currentPos = 0;
     private ArrayList<HistoryDetail> lisHistory;
@@ -89,12 +99,14 @@ public class HistoryAdapter
         private LinearLayout lnToDayItemHistory;
 
         private LinearLayout lnNumberphoneItemHistory;
+        private ImageView imgGenaral;
         private EditText edtPhoneSlowItemHistory;
 
         private LinearLayout lnChosePriceItemHistory;
 
         private Spinner spnLoadmoneyItemHistory;
         private ArrayList<String> lisStringPriceItemHistory;
+        private ArrayList<ItemCard> itemCards;
         //        private TextView tvPriceLoadmoneySlowItemHistory;
 
         public HistoryTransactionViewHoder(View itemView) {
@@ -113,6 +125,7 @@ public class HistoryAdapter
             edtPhoneSlowItemHistory = itemView.findViewById(R.id.edt_phone_loadmoney_item_history);
             lnChosePriceItemHistory = itemView.findViewById(R.id.ln_chose_price_item_history);
             spnLoadmoneyItemHistory = itemView.findViewById(R.id.spn_loadmoney_item_history);
+            imgGenaral = itemView.findViewById(R.id.img_genaral);
             //            tvPriceLoadmoneySlowItemHistory = itemView.findViewById(R.id.tv_price_loadmoney_slow_item_history);
 
             lnFrDayItemHistory.setOnClickListener(new View.OnClickListener() {
@@ -144,46 +157,46 @@ public class HistoryAdapter
                     sToDay = tvToDayItemHistory.getText().toString().trim();
 
                     // khi ma nguoi dung an vao item co so dien thoai:
-                    if (lnNumberphoneItemHistory.getVisibility() == View.VISIBLE) {
-                        sFoneItemHistory = edtPhoneSlowItemHistory.getText().toString().trim();
-                        if (sFromDay.isEmpty() || sToDay.isEmpty() || sFoneItemHistory.isEmpty()) {
-                            Toast.makeText(context, "Vui lòng điền đầy đủ thông tin !",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            onClickOkItemHistory.onClickOk(getAdapterPosition(), sFromDay, sToDay,
-                                    sFoneItemHistory, null);
-                        }
-                    } else if (lnChosePriceItemHistory.getVisibility() == View.VISIBLE) { /*khi nguoi dung an vao item mua ma the(chon gia)*/
-                        if (sFromDay.isEmpty() || sToDay.isEmpty()) {
-                            Toast.makeText(context, "Vui lòng chọn đầy đủ thời gian !",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            String sPrice = getStringPriceOfSpinner(
-                                    (String) spnLoadmoneyItemHistory.getSelectedItem());
-                            onClickOkItemHistory.onClickOk(getAdapterPosition(), sFromDay, sToDay,
-                                    null, getStringPriceOfSpinner(sPrice));
-                            //                        Log.d("sPrice", "onResultDate: " + getStringPriceOfSpinner(sPrice));
-                        }
+                    sFindKey = edtPhoneSlowItemHistory.getText().toString().trim();
+                    if (sFromDay.isEmpty() || sToDay.isEmpty() || spnLoadmoneyItemHistory.getSelectedItemPosition() == 0) {
+                        Toast.makeText(context, "Vui lòng điền đầy đủ và chọn đúng thông tin !",
+                                Toast.LENGTH_SHORT).show();
                     } else {
-                        if (sFromDay.isEmpty() || sToDay.isEmpty()) {
-                            Toast.makeText(context, "Vui lòng chọn đầy đủ thời gian !",
-                                    Toast.LENGTH_SHORT).show();
-                        } else {
-                            onClickOkItemHistory.onClickOk(getAdapterPosition(), sFromDay, sToDay,
-                                    null, null);
+                        if (sFindKey.isEmpty()) {
+                            sFindKey = "0";
                         }
+                        Utils.closeKeyboard(context, edtPhoneSlowItemHistory.getWindowToken());
+                        switch (getAdapterPosition()) {
+                            case PAY_CARD_FRAGMENT:
+                                positionSpinner = itemCards.get(spnLoadmoneyItemHistory.getSelectedItemPosition() - 1).getProviderCode();
+                                break;
+                            case PAY_FAST_FRAGMENT:
+                                positionSpinner = String.valueOf(spnLoadmoneyItemHistory.getSelectedItemPosition() - 1);
+                                break;
+                            case TAKE_MONEY:
+                                positionSpinner = String.valueOf(spnLoadmoneyItemHistory.getSelectedItemPosition());
+                                break;
+                            case RECEIVER_MONEY:
+                                break;
+                            case TRANSFER_MONEY:
+                                break;
+                        }
+                        onClickOkItemHistory.onClickOk(getAdapterPosition(), sFromDay, sToDay,
+                                sFindKey, positionSpinner);
                     }
                 }
             });
         }
 
         private void bindView(HistoryDetail historyDetail, final int position) {
+            itemCards = new ArrayList<>();
+            itemCards = (ArrayList<ItemCard>) ConfigJson.getListTypeCard(SharedPrefs.getInstance().get(Constant.LIST_ITEM_CARD, String.class));
             tvNameHistoryItem.setText(historyDetail.getsTypeOfTransaction());
-            Picasso.with(context).load(historyDetail.getImage()).into(imgHistoryItem);
+            Glide.with(context).load(historyDetail.getImage()).into(imgHistoryItem);
             lnItemAllHistory.setBackgroundResource(historyDetail.getColorItem());
             if (currentPos != position) {
                 lnItemExpandHistory.setVisibility(View.GONE);
-            }else {
+            } else {
                 setDisplayItemHistory(position);
             }
             lnItemAllHistory.setOnClickListener(new View.OnClickListener() {
@@ -199,18 +212,14 @@ public class HistoryAdapter
         private void setDisplayItemHistory(int adapterPosition) {
             switch (adapterPosition) {
                 case PAY_CARD_FRAGMENT:
-                    lnNumberphoneItemHistory.setVisibility(View.GONE);
+                    lnNumberphoneItemHistory.setVisibility(View.VISIBLE);
+                    edtPhoneSlowItemHistory.setHint("Tìm serial...");
                     lnChosePriceItemHistory.setVisibility(View.VISIBLE);
                     lisStringPriceItemHistory = new ArrayList<>();
-                    lisStringPriceItemHistory.add("10.000đ");
-                    lisStringPriceItemHistory.add("20.000đ");
-                    lisStringPriceItemHistory.add("30.000đ");
-                    lisStringPriceItemHistory.add("50.000đ");
-                    lisStringPriceItemHistory.add("100.000đ");
-                    lisStringPriceItemHistory.add("200.000đ");
-                    lisStringPriceItemHistory.add("300.000đ");
-                    lisStringPriceItemHistory.add("500.000đ");
-
+                    lisStringPriceItemHistory.add("Chọn nhà mạng");
+                    for (int i = 0; i < itemCards.size(); i++) {
+                        lisStringPriceItemHistory.add(itemCards.get(i).getNameHomeNetWork());
+                    }
                     // su dung listview ko custom:
                     ArrayAdapter<String> stringArrayAdapter = new ArrayAdapter<>(context,
                             android.R.layout.simple_list_item_activated_1,
@@ -218,17 +227,45 @@ public class HistoryAdapter
                     spnLoadmoneyItemHistory.setAdapter(stringArrayAdapter);
                     break;
                 case PAY_FAST_FRAGMENT:
-                    lnNumberphoneItemHistory.setVisibility(View.GONE);
-                    lnChosePriceItemHistory.setVisibility(View.GONE);
-                    break;
-                case PAY_SLOW_FRAGMENT:
                     lnNumberphoneItemHistory.setVisibility(View.VISIBLE);
-                    lnChosePriceItemHistory.setVisibility(View.GONE);
+                    edtPhoneSlowItemHistory.setHint("Vui lòng nhập số điện thoại ...");
+                    lnChosePriceItemHistory.setVisibility(View.VISIBLE);
+                    ArrayList<String> listStatus = new ArrayList<>();
+                    listStatus.add("Chọn trạng thái");
+                    listStatus.add("Thất bại");
+                    listStatus.add("Thành công");
+                    ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(context,
+                            android.R.layout.simple_list_item_activated_1,
+                            listStatus);
+                    spnLoadmoneyItemHistory.setAdapter(statusAdapter);
                     break;
-                case PAY_MONEY_FOR_USER:
+                case TAKE_MONEY:
+                    lnNumberphoneItemHistory.setVisibility(View.VISIBLE);
+                    imgGenaral.setImageResource(R.drawable.ic_counting_gray_50px);
+                    edtPhoneSlowItemHistory.setHint("Nhập số tiền ...");
+                    lnChosePriceItemHistory.setVisibility(View.VISIBLE);
+                    ArrayList<String> listStatusMoney = new ArrayList<>();
+                    listStatusMoney.add("Chọn trạng thái");
+                    listStatusMoney.add("Đặt lệnh");
+                    listStatusMoney.add("Đang chờ duyệt");
+                    listStatusMoney.add("Đã chuyển");
+                    ArrayAdapter<String> statusMoneyAdapter = new ArrayAdapter<>(context,
+                            android.R.layout.simple_list_item_activated_1,
+                            listStatusMoney);
+                    spnLoadmoneyItemHistory.setAdapter(statusMoneyAdapter);
+                    break;
+                case RECEIVER_MONEY:
                     lnNumberphoneItemHistory.setVisibility(View.GONE);
                     lnChosePriceItemHistory.setVisibility(View.GONE);
                     break;
+                case TRANSFER_MONEY:
+                    lnNumberphoneItemHistory.setVisibility(View.GONE);
+                    lnChosePriceItemHistory.setVisibility(View.GONE);
+                    break;
+//                default:
+//                    lnItemExpandHistory.setVisibility(View.GONE);
+//                    Toast.makeText(context, "Đổi thẻ 66 hiện tại tạm ngừng cung cấp dịch vụ đổi thẻ cào sang tiền mặt", Toast.LENGTH_LONG).show();
+//                    return;
             }
             Animation aSlideDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
             lnItemExpandHistory.startAnimation(aSlideDown);
@@ -241,7 +278,7 @@ public class HistoryAdapter
         }
 
         @Override
-        public void toFrmHistoryDetail() {
+        public void toFrmHistoryDetail(String sMesagge) {
 
         }
 
@@ -255,7 +292,7 @@ public class HistoryAdapter
             datePickerDialog =
                     new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
                         public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                int dayOfMonth) {
+                                              int dayOfMonth) {
 
                             calendar = Calendar.getInstance();
                             calendar.set(year, monthOfYear, dayOfMonth);
@@ -272,8 +309,9 @@ public class HistoryAdapter
     }
 
     public interface OnClickOkItemHistory {
-        void onClickOk(int position, String frDate, String toDate, String sFoneItemHistory,
-                String sPrice);
+        void onClickOk(int position, String frDate, String toDate, String sFindLey,
+                       String positionSpinner);
+
     }
 
     private String getStringPriceOfSpinner(String s) {

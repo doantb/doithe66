@@ -8,10 +8,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import com.vansuita.gaussianblur.GaussianBlur;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import com.vansuita.gaussianblur.GaussianBlur;
+import vn.doithe66.doithe66.Utils.Utils;
 import vn.doithe66.doithe66.activity.BaseActivity;
 import vn.doithe66.doithe66.presenter.RegisterPresenter;
 import vn.doithe66.doithe66.presenter.RegisterPresenterImpl;
@@ -38,6 +41,8 @@ public class RegisterActivity extends BaseActivity implements ProgessView, Regis
     Button mRegisterBtn;
     @BindView(R.id.my_progess_bar)
     RelativeLayout mMyProgessBar;
+    @BindView(R.id.register_txt_pass_lv2)
+    EditText registerTxtPassLv2;
     private RegisterPresenter mPresenter;
 
     @Override
@@ -63,10 +68,12 @@ public class RegisterActivity extends BaseActivity implements ProgessView, Regis
     }
 
     private void checkRegister() {
+        Utils.closeKeyboard(this, registerTxtPassLv2.getWindowToken());
         String user = mRegisterTxtUserName.getText().toString();
         String phone = mRegisterTxtPhone.getText().toString();
         String email = mRegisterTxtEmail.getText().toString();
         String pass = mRegisterTxtPass.getText().toString();
+        String passlv2 = registerTxtPassLv2.getText().toString();
         if (user.equals("") || user == null) {
             mRegisterTxtUserName.setError("Vui lòng nhập họ tên");
         } else if (phone.equals("") || phone == null) {
@@ -75,8 +82,13 @@ public class RegisterActivity extends BaseActivity implements ProgessView, Regis
             mRegisterTxtEmail.setError("Vui lòng nhập đúng định dạng email");
         } else if (pass.equals("") || pass == null) {
             mRegisterTxtPass.setError("Vui lòng nhập password");
+        } else if (passlv2.equals("") || pass == null) {
+            mRegisterTxtPass.setError("Vui lòng nhập password cấp 2");
+        } else if (pass.length() < 6 || passlv2.length() < 6) {
+            Toast.makeText(this, "Vui lòng chọn mật khẩu có độ dài lớn hơn 6 kí tự", Toast.LENGTH_LONG).show();
+            return;
         } else {
-            mPresenter.register(user, phone, email, pass);
+            mPresenter.register(user, phone, email, pass, passlv2);
         }
     }
 
@@ -105,4 +117,5 @@ public class RegisterActivity extends BaseActivity implements ProgessView, Regis
                 Toast.LENGTH_LONG).show();
         startActivity(LoginActivity.class);
     }
+
 }

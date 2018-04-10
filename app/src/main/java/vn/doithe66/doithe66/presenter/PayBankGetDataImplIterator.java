@@ -1,13 +1,14 @@
 package vn.doithe66.doithe66.presenter;
 
 import java.util.ArrayList;
+
 import vn.doithe66.doithe66.R;
 import vn.doithe66.doithe66.model.BankType;
 import vn.doithe66.doithe66.view.PayBankGetDataForListIterator;
 
 import static vn.doithe66.doithe66.Utils.Constant.PAY_CARD_FRAGMENT;
 import static vn.doithe66.doithe66.Utils.Constant.PAY_FAST_FRAGMENT;
-import static vn.doithe66.doithe66.Utils.Constant.PAY_SLOW_FRAGMENT;
+import static vn.doithe66.doithe66.Utils.Constant.TAKE_MONEY;
 
 /**
  * Created by Windows 10 Now on 1/19/2018.
@@ -24,7 +25,7 @@ public class PayBankGetDataImplIterator implements PayBankGetDataForListIterator
             case PAY_FAST_FRAGMENT:
                 bankTypes.addAll(initFaceDataLoadMoneyFast(bankTypes));
                 break;
-            case PAY_SLOW_FRAGMENT:
+            case TAKE_MONEY:
                 bankTypes.addAll(initFaceDataViettelSlowFragment(bankTypes));
                 break;
         }

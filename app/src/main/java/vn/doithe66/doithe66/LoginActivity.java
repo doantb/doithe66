@@ -27,6 +27,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.Utils.SharedPrefs;
+import vn.doithe66.doithe66.Utils.Utils;
 import vn.doithe66.doithe66.activity.BaseActivity;
 import vn.doithe66.doithe66.activity.CreateNewPassActivity;
 import vn.doithe66.doithe66.fragment.ForgetPassFragmentDialog;
@@ -95,6 +96,7 @@ public class LoginActivity extends BaseActivity
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
+                Utils.closeKeyboard(this,mEdtPassword.getWindowToken());
                 mPresenter.loginMuatheAccount(mEdtUserName.getText().toString(),
                         mEdtPassword.getText().toString());
                 break;
@@ -109,9 +111,9 @@ public class LoginActivity extends BaseActivity
                 startActivity(RegisterActivity.class);
                 break;
             case R.id.login_txt_forgot_pass:
-                ForgetPassFragmentDialog forgetPassFragmentDialog = new ForgetPassFragmentDialog();
+                ForgetPassFragmentDialog forgetPassFragmentDialog = ForgetPassFragmentDialog.newInstance(Constant.LOGIN_ACTIVITY);
                 forgetPassFragmentDialog.show(getSupportFragmentManager(),
-                        "forgetPassFragmentDialog");
+                        "forgetPassFragmentDialog1");
                 forgetPassFragmentDialog.setCancelable(false);
                 break;
         }
@@ -131,12 +133,6 @@ public class LoginActivity extends BaseActivity
             //            signOut(mGoogleApiClient, this, this);
             SignOut();
         }
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
     }
 
     @Override

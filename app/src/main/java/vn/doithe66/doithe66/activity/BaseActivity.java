@@ -9,7 +9,9 @@ import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import butterknife.ButterKnife;
 import vn.doithe66.doithe66.HomeActivity;
+import vn.doithe66.doithe66.R;
 
 /**
  * Created by Windows 10 Now on 12/28/2017.
@@ -20,6 +22,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        ButterKnife.bind(this);
         initView(savedInstanceState);
         initVariables(savedInstanceState);
     }
@@ -35,13 +38,24 @@ public abstract class BaseActivity extends FragmentActivity {
         startActivity(intent);
     }
 
-    public void setCancel(final Activity activity, View imageView) {
+    public void setCancel(View imageView) {
         imageView.setVisibility(View.VISIBLE);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(HomeActivity.class);
-                activity.finish();
+                finishWithAnim();
+            }
+        });
+    }
+
+    public void setBack(View imageView) {
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BaseActivity.super.onBackPressed();
+                finishWithAnim();
             }
         });
     }
@@ -53,5 +67,24 @@ public abstract class BaseActivity extends FragmentActivity {
                     (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    protected void onBackPressedCustom() {
+        if (getFragmentManager().getBackStackEntryCount() > 0) {
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+            super.onBackPressed();
+        }
+    }
+
+    public void startActivityWithAnim(Intent intent) {
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+    }
+
+    public void finishWithAnim() {
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

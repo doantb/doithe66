@@ -3,136 +3,147 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:id="@+id/action_bar_top"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_65sdp"
-            android:alpha="0.7"
-            android:background="@drawable/bg_header"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:id="@+id/frm_home_txt_card_to_money"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/card_payment_50px"
-                android:gravity="center"
-                android:text="Đổi thẻ cào thành tiền"
-                android:textAllCaps="true"
-                android:textColor="@color/color_white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/frm_home_txt_pay_code_card"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:drawablePadding="@dimen/_5sdp"
-                android:drawableTop="@drawable/receipt_50px"
-                android:gravity="center"
-                android:text="mua mã thẻ"
-                android:textAllCaps="true"
-                android:textColor="@color/color_white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/frm_home_txt_pay_phone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:drawableTop="@drawable/ipad_mini_50px"
-                android:gravity="center"
-                android:text="nạp tiền điện thoại"
-                android:textAllCaps="true"
-                android:textColor="@color/color_white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
 
         <RelativeLayout
-            android:id="@+id/rl_total_money"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/action_bar_top"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_20sdp"
-            android:paddingRight="@dimen/_20sdp">
+            android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/frm_home_img_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/transaction_50px" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/frm_home_img_money"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="Số dư trong tài khoản" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="69.999đ"
-                android:textColor="@color/color_tranparent_big"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rl_total_money"
-            android:orientation="vertical">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_5sdp"
-                android:background="@color/color_text_gray"></View>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/frm_home_rcl_item_menu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
-
-            <ImageView
+            <LinearLayout
+                android:id="@+id/action_bar_top"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_65sdp"
-                android:src="@drawable/banner_0" />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/color_text_gray"></View>
+                android:alpha="0.7"
+                android:background="@drawable/bg_header"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:visibility="gone"
+                    android:id="@+id/frm_home_txt_card_to_money"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/card_payment_50px"
+                    android:gravity="center"
+                    android:text="Đổi thẻ cào thành tiền"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/frm_home_txt_pay_code_card"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:drawablePadding="@dimen/_5sdp"
+                    android:drawableTop="@drawable/receipt_50px"
+                    android:gravity="center"
+                    android:text="mua mã thẻ"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/frm_home_txt_pay_phone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:drawableTop="@drawable/ipad_mini_50px"
+                    android:gravity="center"
+                    android:text="nạp tiền điện thoại"
+                    android:textAllCaps="true"
+                    android:textColor="@color/color_white"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
             <RelativeLayout
+                android:id="@+id/rl_total_money"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_gray">
+                android:layout_below="@id/action_bar_top"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_20sdp">
+
+                <ImageView
+                    android:id="@+id/frm_home_img_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/transaction_50px" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/_15sdp"
-                    android:layout_marginLeft="@dimen/_30sdp"
-                    android:layout_marginRight="@dimen/_30sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:drawableLeft="@drawable/protect_50px"
-                    android:drawablePadding="@dimen/_5sdp"
-                    android:gravity="center"
-                    android:text="Đổi thẻ 66 an toàn,nhanh chóng,thuận tiện và bảo mật" />
+                    android:layout_below="@id/frm_home_img_money"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:text="Số dư trong tài khoản" />
+
+                <TextView
+                    android:id="@+id/frm_home_txt_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="69.999đ"
+                    android:textColor="@color/color_tranparent_big"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
-        </LinearLayout>
-    </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/rl_total_money"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_5sdp"
+                    android:background="@color/color_text_gray"></View>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/frm_home_rcl_item_menu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_65sdp"
+                    android:src="@drawable/banner_0" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/color_text_gray"></View>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color_gray">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_30sdp"
+                        android:layout_marginRight="@dimen/_30sdp"
+                        android:layout_marginTop="@dimen/_15sdp"
+                        android:drawableLeft="@drawable/protect_50px"
+                        android:drawablePadding="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:text="Đổi thẻ 66 an toàn,nhanh chóng,thuận tiện và bảo mật" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -13,9 +14,14 @@ import butterknife.ButterKnife;
 import java.text.ParseException;
 import java.util.ArrayList;
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.AutoLogin;
+import vn.doithe66.doithe66.Utils.ConfigJson;
+import vn.doithe66.doithe66.Utils.Constant;
+import vn.doithe66.doithe66.Utils.SharedPrefs;
 import vn.doithe66.doithe66.adapter.HistoryAdapter;
 import vn.doithe66.doithe66.model.DataResultHistory;
 import vn.doithe66.doithe66.model.HistoryDetail;
+import vn.doithe66.doithe66.model.UserInfo;
 import vn.doithe66.doithe66.presenter.HistoryFrmPresenter;
 import vn.doithe66.doithe66.presenter.HistoryFrmPresenterImpl;
 import vn.doithe66.doithe66.view.HistoryFrmView;
@@ -59,7 +65,11 @@ public class HistoryTransactionFragment extends BaseFragment
         if (bundle != null) {
             token = bundle.getString(KEY_TOKEN);
         }
-        ButterKnife.bind(this, mRoot);
+        UserInfo mUserInfo = ConfigJson.getUserAccount(SharedPrefs.getInstance().get(Constant.USER_ACCOUNT, String.class));
+        AutoLogin autoLogin = new AutoLogin(getActivity());
+        if (!autoLogin.bLogin) {
+            autoLogin.login(mUserInfo.getPassWord());
+        }
         lisHistory = new ArrayList<>();
         //        mFrmPresenter = new HistoryFrmPresenterImpl(this, this);
         mFrmPresenter = new HistoryFrmPresenterImpl(this);
@@ -78,15 +88,15 @@ public class HistoryTransactionFragment extends BaseFragment
     }
 
     @Override
-    public void toFrmHistoryDetail() {
-        HistoryFragmentDetail historyFragmentDetail = new HistoryFragmentDetail();
-        historyFragmentDetail.setDataForList(mResultHistories);
+    public void toFrmHistoryDetail(String sMesagge) {
+        HistoryFragmentDetail historyFragmentDetail = HistoryFragmentDetail.setDataForList(mResultHistories);
         FragmentManager fragmentManager = getFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.right_in, R.anim.left_out);
-        fragmentTransaction.replace(R.id.fr_main, historyFragmentDetail, "historyFragmentDetail");
+        fragmentTransaction.replace(R.id.fr_main, historyFragmentDetail, HistoryFragmentDetail.class.getName());
         fragmentTransaction.addToBackStack("historyFragmentDetail");
         fragmentTransaction.commit();
+        Toast.makeText(getActivity(), sMesagge, Toast.LENGTH_SHORT).show();
     }
 
     @Override

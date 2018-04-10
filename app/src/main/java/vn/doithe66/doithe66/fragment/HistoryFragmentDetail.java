@@ -8,6 +8,7 @@ import android.view.View;
 import java.text.ParseException;
 import java.util.ArrayList;
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.adapter.HistoryDetailAdapter;
 import vn.doithe66.doithe66.model.DataResultHistory;
 
@@ -26,10 +27,12 @@ public class HistoryFragmentDetail extends BaseFragment {
     private String token;
     private String sPrice;
 
-    public HistoryFragmentDetail setDataForList(ArrayList<DataResultHistory> dataResultHistories) {
+    public static HistoryFragmentDetail setDataForList(ArrayList<DataResultHistory> dataResultHistories) {
         HistoryFragmentDetail historyFragmentDetail = new HistoryFragmentDetail();
         if (dataResultHistories != null) {
-            this.lisHistory = dataResultHistories;
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList(Constant.LIST_HISTORY_DETAIL,dataResultHistories);
+            historyFragmentDetail.setArguments(bundle);
         }
         return historyFragmentDetail;
     }
@@ -41,9 +44,9 @@ public class HistoryFragmentDetail extends BaseFragment {
 
     @Override
     protected void init(View mRoot, Bundle savedInstanceState) throws ParseException {
-
         rclHistory = mRoot.findViewById(R.id.rclHistory);
-        setDataForList(lisHistory);
+        lisHistory = new ArrayList<>();
+        lisHistory = getArguments().getParcelableArrayList(Constant.LIST_HISTORY_DETAIL);
         setRecycleViewLayoutManager();
     }
 

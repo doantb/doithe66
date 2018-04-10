@@ -26,7 +26,7 @@ import static vn.doithe66.doithe66.Utils.Constant.EMAIL;
 import static vn.doithe66.doithe66.Utils.Constant.FROM_FRAGMENT;
 import static vn.doithe66.doithe66.Utils.Constant.INFO_USER_EDIT;
 import static vn.doithe66.doithe66.Utils.Constant.KEY_TOKEN;
-import static vn.doithe66.doithe66.Utils.Constant.PAY_SLOW_FRAGMENT;
+import static vn.doithe66.doithe66.Utils.Constant.TAKE_MONEY;
 
 /**
  * Created by Windows 10 Now on 1/17/2018.
@@ -133,7 +133,7 @@ public class PaySlowFragment extends BaseFragment implements AdapterView.OnItemS
             infoUserEdit.setNumberPhone(sEdtPhone);
             infoUserEdit.setEmail(SharedPrefs.getInstance().get(EMAIL, String.class));
             Bundle bundle = new Bundle();
-            bundle.putInt(FROM_FRAGMENT, PAY_SLOW_FRAGMENT);
+            bundle.putInt(FROM_FRAGMENT, TAKE_MONEY);
             bundle.putSerializable(INFO_USER_EDIT, infoUserEdit);
             payBankFragment.setArguments(bundle);
             payBankFragment.setContext(getActivity());

@@ -3,8 +3,6 @@ package vn.doithe66.doithe66.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -14,18 +12,23 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import java.util.ArrayList;
-
 import vn.doithe66.doithe66.NotificationActivity;
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.AutoLogin;
+import vn.doithe66.doithe66.Utils.ConfigJson;
 import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.Utils.SharedPrefs;
 import vn.doithe66.doithe66.adapter.PayBankAdapter;
 import vn.doithe66.doithe66.model.BankType;
 import vn.doithe66.doithe66.model.InfoUserEdit;
+import vn.doithe66.doithe66.model.ResultCardDoithe;
+import vn.doithe66.doithe66.model.UserInfo;
 import vn.doithe66.doithe66.presenter.PayBankGetDataImplIterator;
 import vn.doithe66.doithe66.presenter.PayBankPresenter;
 import vn.doithe66.doithe66.presenter.PayBankPresenterImpl;
@@ -52,12 +55,12 @@ public class PayBankActivity extends BaseActivity
     ImageView mImgItemRecyclePayBank;
     @BindView(R.id.rl_ban_the)
     RelativeLayout mRlBanThe;
-    @BindView(R.id.txt_pay_with)
-    TextView mTxtPayWith;
+    //    @BindView(R.id.txt_pay_with)
+//    TextView mTxtPayWith;
     @BindView(R.id.ll_top)
     LinearLayout mLlTop;
-    @BindView(R.id.recycle_pay_bank)
-    RecyclerView mRecyclePayBank;
+    //    @BindView(R.id.recycle_pay_bank)
+//    RecyclerView mRecyclePayBank;
     @BindView(R.id.btn_click_choose_bank)
     Button mBtnClickChooseBank;
     @BindView(R.id.ab_img_button_back)
@@ -70,11 +73,25 @@ public class PayBankActivity extends BaseActivity
     RelativeLayout mActionBarApp;
     @BindView(R.id.my_progess_bar)
     RelativeLayout mMyProgessBar;
+    @BindView(R.id.txt_title_type_card)
+    TextView txtTitleTypeCard;
+    @BindView(R.id.txt_type_card)
+    TextView txtTypeCard;
+    @BindView(R.id.txt_title_count)
+    TextView txtTitleCount;
+    @BindView(R.id.txt_count_card)
+    TextView txtCountCard;
+    @BindView(R.id.txt_title_price)
+    TextView txtTitlePrice;
+    @BindView(R.id.txt_price_card)
+    TextView txtPriceCard;
+    @BindView(R.id.rl_info_buy)
+    RelativeLayout rlInfoBuy;
     private Context mContext;
     private ArrayList<BankType> bankTypes;
-    private PayBankAdapter mPayBankAdapter;
+    //    private PayBankAdapter mPayBankAdapter;
     private PayBankGetDataForListIterator mIterator;
-    private RecyclerView.LayoutManager mLayoutManager;
+    //    private RecyclerView.LayoutManager mLayoutManager;
     private InfoUserEdit mUserEdit;
     private int fromFragment;
     private String token;
@@ -87,23 +104,26 @@ public class PayBankActivity extends BaseActivity
 
     @Override
     protected void initView(Bundle savedInstanceState) {
-        ButterKnife.bind(this);
+        mRbItemBanthe.setChecked(true);
         token = SharedPrefs.getInstance().get(ACCESS_TOKEN, String.class);
         Intent intent = getIntent();
         if (intent != null) {
             fromFragment = intent.getIntExtra(Constant.FROM_FRAGMENT, 0);
             mUserEdit = (InfoUserEdit) intent.getSerializableExtra(Constant.INFO_USER_EDIT);
+            txtTypeCard.setText(mUserEdit.getTypeCard());
+            txtCountCard.setText(mUserEdit.getCountBuy() + "");
+            txtPriceCard.setText(mUserEdit.getPrice() + "");
         } else {
             mUserEdit = new InfoUserEdit();
         }
         bankTypes = new ArrayList<>();
         mIterator = new PayBankGetDataImplIterator();
         mIterator.initDataForPayBank(fromFragment, bankTypes);
-        mPayBankAdapter = new PayBankAdapter(this, bankTypes, this);
-        mLayoutManager = new GridLayoutManager(mContext, 2);
-        mRecyclePayBank.setHasFixedSize(true);
-        mRecyclePayBank.setLayoutManager(mLayoutManager);
-        mRecyclePayBank.setAdapter(mPayBankAdapter);
+//        mPayBankAdapter = new PayBankAdapter(this, bankTypes, this);
+//        mLayoutManager = new GridLayoutManager(mContext, 2);
+//        mRecyclePayBank.setHasFixedSize(true);
+//        mRecyclePayBank.setLayoutManager(mLayoutManager);
+//        mRecyclePayBank.setAdapter(mPayBankAdapter);
     }
 
     @Override
@@ -112,17 +132,11 @@ public class PayBankActivity extends BaseActivity
         mActionBarApp.setVisibility(View.VISIBLE);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-    }
-
     @OnClick(R.id.btn_click_choose_bank)
     public void onViewClicked() {
         PayBankPresenter payBankPresenter = new PayBankPresenterImpl(this, this);
         if (mRbItemBanthe.isChecked()) {
-            payBankPresenter.fromAccountMuathe(fromFragment, token, mUserEdit);
+            payBankPresenter.fromAccountDoithe(fromFragment, token, mUserEdit);
         } else {
             payBankPresenter.getUrlBank(PAY_CARD_FRAGMENT, token, mUserEdit, url);
         }
@@ -131,16 +145,16 @@ public class PayBankActivity extends BaseActivity
     @Override
     public void onClickBank(int position) {
         mUserEdit.setBankCode(bankTypes.get(position).getBankName());
-        mPayBankAdapter.updateAll();
+//        mPayBankAdapter.updateAll();
         bankTypes.get(position).setbIsClick(true);
         mRbItemBanthe.setChecked(false);
-        mPayBankAdapter.notifyDataSetChanged();
+//        mPayBankAdapter.notifyDataSetChanged();
     }
 
     @OnClick(R.id.rl_ban_the)
     public void onViewClickedMuathe() {
-        mPayBankAdapter.updateAll();
-        mPayBankAdapter.notifyDataSetChanged();
+//        mPayBankAdapter.updateAll();
+//        mPayBankAdapter.notifyDataSetChanged();
         mRbItemBanthe.setChecked(true);
     }
 
@@ -163,21 +177,31 @@ public class PayBankActivity extends BaseActivity
     }
 
     @Override
-    public void onGetListCardSuccess(String sListCard, String message) {
+    public void onGetListCardSuccess(ResultCardDoithe sListCard, String message) {
 //        Log.e("card",sListCard);
 //        Log.e("card",message);
-        if (sListCard != null && !sListCard.isEmpty()) {
-            Toast.makeText(this, message + "", Toast.LENGTH_SHORT).show();
+        if (sListCard.getData() != null) {
+            UserInfo mUserInfo = ConfigJson.getUserAccount(SharedPrefs.getInstance().get(Constant.USER_ACCOUNT, String.class));
+            AutoLogin autoLogin = new AutoLogin(this);
+            if (!autoLogin.bLogin) {
+                autoLogin.login(mUserInfo.getPassWord());
+            }
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, ResultDetailNoBankActivity.class);
-            intent.putExtra(LIST_CARD, sListCard);
             intent.putExtra(USER_INFO,mUserEdit);
+            intent.putExtra(LIST_CARD, sListCard);
             startActivity(intent);
         } else {
             Toast.makeText(this, message + "", Toast.LENGTH_SHORT).show();
         }
     }
 
-    @OnClick({ R.id.ab_img_button_back, R.id.ab_img_button_confirm })
+    @Override
+    public void onGetMessagePayForMobile(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @OnClick({R.id.ab_img_button_back, R.id.ab_img_button_confirm})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ab_img_button_back:

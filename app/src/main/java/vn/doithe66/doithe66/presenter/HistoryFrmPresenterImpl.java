@@ -40,9 +40,9 @@ public class HistoryFrmPresenterImpl implements HistoryFrmPresenter, OnSeeHistor
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(String sMesagge) {
 //        mProgessView.hideProgess();
-        mHistoryFrmView.toFrmHistoryDetail();
+        mHistoryFrmView.toFrmHistoryDetail(sMesagge);
     }
 
     @Override

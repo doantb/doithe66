@@ -2,23 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        >
+        android:scrollbars="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/_50sdp"
-                android:background="@android:color/white"
-                >
+                android:background="@android:color/white">
+
                 <android.support.v7.widget.CardView
                     android:id="@+id/crv_content_fast"
                     android:layout_width="match_parent"
@@ -27,141 +27,156 @@
                     android:layout_marginLeft="@dimen/_30sdp"
                     android:layout_marginRight="@dimen/_30sdp"
                     android:layout_marginTop="-20dp"
-                    app:cardCornerRadius="@dimen/_15sdp"
-                    >
+                    app:cardCornerRadius="@dimen/_15sdp">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        >
+                        android:layout_height="match_parent">
+
                         <LinearLayout
                             android:id="@+id/ll_content_fast"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginTop="@dimen/_30sdp"
-                            android:orientation="vertical"
-                            >
+                            android:orientation="vertical">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:src="@drawable/ic_card_name_50px"
-                                    />
+                                    android:src="@drawable/ic_card_name_50px" />
+
                                 <EditText
                                     android:id="@+id/frm_bank_name"
+                                    style="@style/text_view_profile"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_15sdp"
                                     android:layout_weight="6"
                                     android:padding="@dimen/_8sdp"
-                                    android:text="Họ và tên"
-                                    style="@style/text_view_profile"
-                                    />
+                                    android:text="Họ và tên" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_15sdp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:src="@drawable/ic_iphonex_50px"
-                                    />
+                                    android:src="@drawable/ic_iphonex_50px" />
+
                                 <EditText
                                     android:id="@+id/frm_bank_phone"
+                                    style="@style/text_view_profile"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_15sdp"
                                     android:layout_weight="6"
                                     android:padding="@dimen/_8sdp"
-                                    android:text="Số điện thoại"
-                                    style="@style/text_view_profile"
-                                    />
+                                    android:text="Số điện thoại" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_15sdp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:src="@drawable/ic_type_pay_50px"
-                                    />
+                                    android:src="@drawable/ic_type_pay_50px" />
+
                                 <EditText
+                                    android:id="@+id/frm_bank_edt_number_bank"
+                                    style="@style/text_view_profile"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_15sdp"
                                     android:layout_weight="6"
                                     android:padding="@dimen/_8sdp"
-                                    android:text="Số tài khoản"
-                                    style="@style/text_view_profile"
-                                    />
+                                    android:text="Số tài khoản" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_15sdp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:src="@drawable/ic_own_50px"
-                                    />
+                                    android:src="@drawable/ic_own_50px" />
+
                                 <EditText
+                                    android:id="@+id/frm_bank_own_account"
+                                    style="@style/edit_text_custom"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_15sdp"
                                     android:layout_weight="6"
                                     android:hint="Chủ tài khoản"
-                                    android:padding="@dimen/_8sdp"
-                                    style="@style/edit_text_custom"
-                                    />
+                                    android:padding="@dimen/_8sdp" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
                                 android:layout_marginTop="@dimen/_15sdp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:src="@drawable/ic_bank_50px"
-                                    />
-                                <EditText
+                                    android:src="@drawable/ic_bank_50px" />
+
+                                <RelativeLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_15sdp"
-                                    android:layout_weight="6"
-                                    android:hint="Tên ngân hàng"
-                                    android:padding="@dimen/_8sdp"
-                                    style="@style/edit_text_custom"
-                                    />
+                                    android:layout_weight="6">
+
+                                    <Spinner
+                                        android:id="@+id/spn_load_bank_item"
+                                        style="@style/text_view_profile"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
+                                        android:hint="Chọn mệnh giá" />
+
+                                    <TextView
+                                        android:id="@+id/frm_bank_txt_name_bank"
+                                        style="@style/edit_text_custom"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:hint="Tên ngân hàng"
+                                        android:padding="@dimen/_8sdp" />
+                                </RelativeLayout>
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="0dp"
@@ -169,50 +184,51 @@
                                 android:layout_marginTop="@dimen/_15sdp"
                                 android:layout_weight="1"
                                 android:gravity="center_vertical"
-                                android:orientation="horizontal"
-                                >
+                                android:orientation="horizontal">
+
                                 <ImageView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2"
-                                    android:src="@drawable/ic_marker_50px"
-                                    />
+                                    android:src="@drawable/ic_marker_50px" />
+
                                 <EditText
+                                    android:id="@+id/frm_bank_edt_name_branch"
+                                    style="@style/edit_text_custom"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="@dimen/_15sdp"
                                     android:layout_weight="6"
                                     android:hint="Chi nhánh"
-                                    android:padding="@dimen/_8sdp"
-                                    style="@style/edit_text_custom"
-                                    />
+                                    android:padding="@dimen/_8sdp" />
                             </LinearLayout>
                         </LinearLayout>
                     </RelativeLayout>
 
                 </android.support.v7.widget.CardView>
+
                 <android.support.v7.widget.CardView
                     android:id="@+id/crv_top"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    >
+                    android:layout_height="120dp">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@color/color_white"
-                        >
+                        android:background="@color/color_white">
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:scaleType="fitXY"
-                            android:src="@drawable/bg_info_bank"
-                            />
+                            android:src="@drawable/bg_info_bank" />
+
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:alpha="0.5"
-                            android:background="@drawable/bg_custom_pay_slow"
-                            />
+                            android:background="@drawable/bg_custom_pay_slow" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -222,10 +238,10 @@
                             android:text="Thông tin tài khoản ngân hàng"
                             android:textColor="@android:color/white"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </RelativeLayout>
                 </android.support.v7.widget.CardView>
+
                 <Button
                     android:id="@+id/frm_bank_btn_edit_info"
                     android:layout_width="wrap_content"
@@ -236,8 +252,7 @@
                     android:background="@drawable/gr_bg_button_buy_now"
                     android:padding="@dimen/_10sdp"
                     android:text="Sửa thông tin"
-                    android:textColor="@android:color/white"
-                    />
+                    android:textColor="@android:color/white" />
             </RelativeLayout>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>

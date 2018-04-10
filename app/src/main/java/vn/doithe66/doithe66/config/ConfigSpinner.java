@@ -3,10 +3,17 @@ package vn.doithe66.doithe66.config;
 import android.content.Context;
 import android.os.Build;
 import android.widget.Spinner;
+
 import java.util.ArrayList;
+import java.util.List;
+
+import vn.doithe66.doithe66.Utils.ConfigJson;
 import vn.doithe66.doithe66.Utils.Constant;
+import vn.doithe66.doithe66.Utils.SharedPrefs;
 import vn.doithe66.doithe66.Utils.Utils;
 import vn.doithe66.doithe66.adapter.SpinnerAdapter;
+import vn.doithe66.doithe66.adapter.SpinnerChooseBankAdapter;
+import vn.doithe66.doithe66.model.BankType;
 
 /**
  * Created by Dell Precision on 11/29/2017.
@@ -38,8 +45,8 @@ public class ConfigSpinner {
 
     // spn chose price custom:
     public static void setupSpinnner(ArrayList<String> listSpinner,
-            SpinnerAdapter spinnerAdapter, Spinner spinnerChosePrice, Context context,
-            String typeSpinner) {
+                                     SpinnerAdapter spinnerAdapter, Spinner spinnerChosePrice, Context context,
+                                     String typeSpinner) {
         if (typeSpinner.equalsIgnoreCase(Constant.TYPE_SPINNER)) {
             listSpinner.add("Kiểu thanh toán: Trả trước");
             listSpinner.add("Kiểu thanh toán: Trả sau");
@@ -58,6 +65,15 @@ public class ConfigSpinner {
         spinnerChosePrice.setAdapter(spinnerAdapter);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             spinnerChosePrice.setDropDownVerticalOffset(Utils.dpToPx(50));
+        }
+    }
+
+    public static void setupSpinnnerBank(Context context, Spinner spinnerChoseBank, SpinnerChooseBankAdapter spinnerAdapter, ArrayList<BankType> bankTypes) {
+        spinnerAdapter =
+                new SpinnerChooseBankAdapter(context, android.R.layout.simple_spinner_item, bankTypes);
+        spinnerChoseBank.setAdapter(spinnerAdapter);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            spinnerChoseBank.setDropDownVerticalOffset(Utils.dpToPx(50));
         }
     }
 }

@@ -7,9 +7,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
+
 import vn.doithe66.doithe66.R;
+import vn.doithe66.doithe66.Utils.Utils;
 import vn.doithe66.doithe66.model.ResultCard;
+import vn.doithe66.doithe66.model.ResultCardDoithe;
 
 /**
  * Created by Dell Precision on 12/23/2017.
@@ -18,14 +23,14 @@ import vn.doithe66.doithe66.model.ResultCard;
 public class RvCardBuySuccessAdapter
         extends RecyclerView.Adapter<RvCardBuySuccessAdapter.CardBuySuccessViewHoder> {
     private Context context;
-    private ArrayList<ResultCard> lisCardBuySuccess;
+    private ArrayList<ResultCardDoithe.DataBean> lisCardBuySuccess;
     private onClickCopy mOnClickCopy;
 
     public void setOnClickCopy(onClickCopy onClickCopy) {
         mOnClickCopy = onClickCopy;
     }
 
-    public RvCardBuySuccessAdapter(Context context, ArrayList<ResultCard> lisCardBuySuccess) {
+    public RvCardBuySuccessAdapter(Context context, ArrayList<ResultCardDoithe.DataBean> lisCardBuySuccess) {
         this.context = context;
         this.lisCardBuySuccess = lisCardBuySuccess;
     }
@@ -40,8 +45,19 @@ public class RvCardBuySuccessAdapter
     @Override
     public void onBindViewHolder(CardBuySuccessViewHoder holder, int position) {
         holder.tvCountCardSuccess.setText("" + (position + 1));
-        holder.tvPassCardSuccess.setText(lisCardBuySuccess.get(position).getProviderCode());
+        String s = lisCardBuySuccess.get(position).getPinCode();
+        int pos = Utils.posSpecial(lisCardBuySuccess.get(position).getPinCode());
+        if (pos!=1){
+            String s1 = s.substring(0,pos);
+            holder.tvPassCardSuccess.setText(s1);
+        }
         holder.txtSerial.setText(lisCardBuySuccess.get(position).getSerial());
+    }
+
+    private String makeCodeCard(String oldCode) {
+        oldCode.replace(" ", "/");
+        int endPos = oldCode.indexOf("/");
+        return oldCode.substring(0, endPos);
     }
 
     @Override

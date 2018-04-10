@@ -1,5 +1,8 @@
 package vn.doithe66.doithe66.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
@@ -7,7 +10,7 @@ import java.io.Serializable;
  * Created by admin on 7/13/17.
  */
 
-public class UserInfo implements Serializable {
+public class UserInfo implements Parcelable {
     @SerializedName("UserName")
     String UserName;
 
@@ -47,6 +50,8 @@ public class UserInfo implements Serializable {
     @SerializedName("ChoXuLy")
     double ChoXuLy;
 
+    private String passWord;
+
     public UserInfo() {
     }
 
@@ -64,6 +69,14 @@ public class UserInfo implements Serializable {
         SoDuKhaDung = soDuKhaDung;
         SoDuDongBang = soDuDongBang;
         ChoXuLy = choXuLy;
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
     public double getChoXuLy() {
@@ -171,21 +184,54 @@ public class UserInfo implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "UserInfo{" +
-                "UserName='" + UserName + '\'' +
-                ", Name='" + Name + '\'' +
-                ", CreateDate='" + CreateDate + '\'' +
-                ", Address='" + Address + '\'' +
-                ", Phone='" + Phone + '\'' +
-                ", BankNumber='" + BankNumber + '\'' +
-                ", BankAccount='" + BankAccount + '\'' +
-                ", BankCode='" + BankCode + '\'' +
-                ", BankName='" + BankName + '\'' +
-                ", BankBranch='" + BankBranch + '\'' +
-                ", SoDuKhaDung=" + SoDuKhaDung +
-                ", SoDuDongBang=" + SoDuDongBang +
-                ", ChoXuLy=" + ChoXuLy +
-                '}';
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.UserName);
+        dest.writeString(this.Name);
+        dest.writeString(this.CreateDate);
+        dest.writeString(this.Address);
+        dest.writeString(this.Phone);
+        dest.writeString(this.BankNumber);
+        dest.writeString(this.BankAccount);
+        dest.writeString(this.BankCode);
+        dest.writeString(this.BankName);
+        dest.writeString(this.BankBranch);
+        dest.writeDouble(this.SoDuKhaDung);
+        dest.writeDouble(this.SoDuDongBang);
+        dest.writeDouble(this.ChoXuLy);
+        dest.writeString(this.passWord);
+    }
+
+    protected UserInfo(Parcel in) {
+        this.UserName = in.readString();
+        this.Name = in.readString();
+        this.CreateDate = in.readString();
+        this.Address = in.readString();
+        this.Phone = in.readString();
+        this.BankNumber = in.readString();
+        this.BankAccount = in.readString();
+        this.BankCode = in.readString();
+        this.BankName = in.readString();
+        this.BankBranch = in.readString();
+        this.SoDuKhaDung = in.readDouble();
+        this.SoDuDongBang = in.readDouble();
+        this.ChoXuLy = in.readDouble();
+        this.passWord = in.readString();
+    }
+
+    public static final Parcelable.Creator<UserInfo> CREATOR = new Parcelable.Creator<UserInfo>() {
+        @Override
+        public UserInfo createFromParcel(Parcel source) {
+            return new UserInfo(source);
+        }
+
+        @Override
+        public UserInfo[] newArray(int size) {
+            return new UserInfo[size];
+        }
+    };
 }

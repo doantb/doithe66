@@ -10,5 +10,5 @@ public interface PayBankPresenter {
     public void getUrlBank(int positionFragment, String token, InfoUserEdit infoUserEdit,
             String url);
 
-    public void fromAccountMuathe(int positionFragment, String token, InfoUserEdit infoUserEdit);
+    public void fromAccountDoithe(int positionFragment, String token, InfoUserEdit infoUserEdit);
 }

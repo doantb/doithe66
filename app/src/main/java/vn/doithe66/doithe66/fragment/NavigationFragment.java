@@ -10,9 +10,10 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import com.mikhaellopez.circularimageview.CircularImageView;
 import java.text.ParseException;
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 import vn.doithe66.doithe66.LoginActivity;
 import vn.doithe66.doithe66.R;
 import vn.doithe66.doithe66.Utils.Constant;
@@ -34,7 +35,7 @@ public class NavigationFragment extends BaseFragment implements NavigationAdapte
     @BindView(R.id.nav_txt_user_name)
     TextView mNavTxtUserName;
     @BindView(R.id.img_avatar_profile_user)
-    CircularImageView mImgAvatarProfileUser;
+    CircleImageView mImgAvatarProfileUser;
     Unbinder unbinder;
     private RecyclerView rclNav;
     private ArrayList<ItemNav> mItemNavs;

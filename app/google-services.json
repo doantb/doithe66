@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "738804339426-b7e8if3gcftoanh36kjpl71ku07vhb1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.doithe66.doithe66",
+            "certificate_hash": "1195c11ed76b02cb4b714d6dfac214d7cb2be8e3"
+          }
+        },
+        {
           "client_id": "738804339426-4548d4q9u8v70c9shr75rhv4ocg9i14q.apps.googleusercontent.com",
           "client_type": 3
         },

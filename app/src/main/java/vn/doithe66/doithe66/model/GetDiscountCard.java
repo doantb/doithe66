@@ -18,7 +18,7 @@ public class GetDiscountCard {
     public String ProviderCode;
 
     @SerializedName("data")
-    public Object Data;
+    public String Data;
 
     @SerializedName("Description")
     private String Description;
@@ -39,11 +39,11 @@ public class GetDiscountCard {
         Price = price;
     }
 
-    public Object getData() {
+    public String getData() {
         return Data;
     }
 
-    public void setData(Object data) {
+    public void setData(String data) {
         Data = data;
     }
 

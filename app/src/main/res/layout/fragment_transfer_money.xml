@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/_50sdp">
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/crv_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/color_white">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/bg_slow" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:alpha="0.3"
+                            android:background="@drawable/bg_custom_pay_slow" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="Chuyển tiền giữa 2 tài khoản trên cùng hệ thống."
+                            android:textColor="@color/color_white"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/crv_content_fast"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/_30sdp"
+                    android:layout_marginRight="@dimen/_30sdp"
+                    android:layout_marginTop="100dp"
+                    android:elevation="5dp"
+                    app:cardCornerRadius="@dimen/_5sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:background="@drawable/bg_transfer_money"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:layout_marginRight="@dimen/_8sdp"
+                                android:layout_weight="1"
+                                android:src="@drawable/user" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="7"
+                                android:gravity="center_vertical"
+                                android:text="Thông tin tài khoản"
+                                android:textColor="@color/light_gray"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="@color/bg_light_gray"></View>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_60sdp"
+                            android:layout_margin="@dimen/_10sdp">
+
+                            <android.support.v7.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:layout_weight="3"
+                                app:cardCornerRadius="@dimen/_5sdp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/icon_doithe66" />
+                            </android.support.v7.widget.CardView>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="6"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/frm_tran_money_txt_name_own_account"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Đoàn Bùi"
+                                    android:textColor="@color/color_black" />
+
+                                <TextView
+                                    android:id="@+id/frm_tran_money_txt_money"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Số dư : 3.333đ" />
+
+                                <TextView
+                                    android:id="@+id/frm_tran_money_txt_name_bank"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Ngân hàng VietcomBank" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="@dimen/_30sdp"
+                            android:layout_marginRight="@dimen/_30sdp"
+                            android:background="@color/color_view_1dp"></View>
+
+                        <LinearLayout
+                            android:id="@+id/ll_content_fast"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:layout_weight="1"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:src="@drawable/ic_email_gray_50px" />
+
+                                <EditText
+                                    android:id="@+id/frm_tran_money_edt_email"
+                                    style="@style/edit_text_custom"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="@dimen/_15sdp"
+                                    android:layout_weight="6"
+                                    android:hint="Nhập email nhận tiền"
+                                    android:padding="@dimen/_8sdp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/frm_tran_btn_search_info_receiver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:background="@drawable/bg_button_transfer"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:paddingRight="@dimen/_10sdp"
+                            android:text="Tìm thông tin người nhận"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <LinearLayout
+                            android:id="@+id/frm_tran_money_ln_receiver"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/frm_tran_money_txt_end_less"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:drawableLeft="@drawable/ic_expand_less"
+                                android:drawableRight="@drawable/ic_expand_less"
+                                android:gravity="center"
+                                android:text="@string/end_less"
+                                android:textColor="@color/deep_orange_500"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/_10sdp"
+                                android:layout_marginLeft="@dimen/_10sdp"
+                                android:text="Thông tin người nhận"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_60sdp"
+                                android:orientation="horizontal">
+
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/_50sdp"
+                                    android:layout_marginLeft="@dimen/_10sdp"
+                                    android:layout_marginRight="@dimen/_10sdp"
+                                    android:layout_weight="3"
+                                    app:cardCornerRadius="@dimen/_5sdp">
+
+                                    <ImageView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:src="@drawable/icon_doithe66" />
+                                </android.support.v7.widget.CardView>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="6"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/frm_tran_money_txt_name_receiver"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Đoàn Bùi"
+                                        android:textColor="@color/color_black" />
+
+                                    <TextView
+                                        android:id="@+id/frm_tran_money_txt_number_bank"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Số tài khoản : 0123456789" />
+
+                                    <TextView
+                                        android:id="@+id/frm_tran_money_txt_name_bank_receiver"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Ngân hàng VietcomBank" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_20sdp"
+                            android:layout_marginRight="@dimen/_20sdp"
+                            android:background="@color/color_view_1dp"></View>
+                        <LinearLayout
+                            android:id="@+id/frm_tran_money_ln_count"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_40sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <ImageView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:src="@drawable/ic_counting_gray_50px" />
+
+                            <EditText
+                                android:inputType="number"
+                                android:id="@+id/frm_tran_money_edt_count"
+                                style="@style/edit_text_custom"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_15sdp"
+                                android:layout_weight="6"
+                                android:hint="Nhập số tiền cần chuyển"
+                                android:padding="@dimen/_8sdp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <Button
+                    android:id="@+id/frm_tran_money_btn_trans_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/crv_content_fast"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-25dp"
+                    android:background="@drawable/gr_bg_button_buy_now"
+                    android:padding="@dimen/_10sdp"
+                    android:text="Chuyển tiền"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+    <include layout="@layout/my_progess_bar"></include>
+</RelativeLayout>

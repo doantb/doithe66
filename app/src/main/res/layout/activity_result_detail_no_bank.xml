@@ -13,9 +13,9 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginLeft="@dimen/_35sdp"
         android:layout_marginRight="@dimen/_35sdp"
-        android:layout_marginTop="@dimen/xsmall_radius_5dp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:scaleType="fitCenter"
-        android:src="@drawable/logo_muathe123"
+        android:src="@drawable/iconlogo_doithe66"
         />
 
     <LinearLayout
@@ -43,7 +43,8 @@
                 android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:text="Số lượng:"
-                android:textColor="@color/color_green"
+                android:textStyle="bold"
+                android:textColor="@color/light_gray"
                 />
 
             <TextView
@@ -86,7 +87,8 @@
                 android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:text="Mệnh giá:"
-                android:textColor="@color/color_green"
+                android:textStyle="bold"
+                android:textColor="@color/light_gray"
                 />
 
             <TextView
@@ -119,7 +121,7 @@
                 android:gravity="start|center_vertical"
                 android:maxLines="1"
                 android:text="Email:"
-                android:textColor="@color/color_green"
+                android:textColor="@color/light_gray"
                 />
 
             <TextView
@@ -139,8 +141,8 @@
         <TextView
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/xsmall_radius_5dp"
-            android:text="Mã Thẻ :"
-            android:textColor="@color/color_green"
+            android:text="Danh sách thẻ :"
+            android:textColor="@color/light_gray"
             android:textSize="18sp"
             style="@style/basetext"
             />

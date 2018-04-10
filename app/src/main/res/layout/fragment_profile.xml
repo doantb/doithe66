@@ -123,7 +123,7 @@
 
                     >
 
-                    <com.mikhaellopez.circularimageview.CircularImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/img_avatar_profile_user"
                         android:layout_width="100dp"
                         android:layout_height="100dp"

@@ -1,13 +1,17 @@
 package vn.doithe66.doithe66.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+
 import java.text.ParseException;
 
 /**
@@ -25,7 +29,7 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-            @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         mRoot = inflater.inflate(layoutId(), container, false);
         mUnbinder = ButterKnife.bind(this, mRoot);
         try {
@@ -51,10 +55,17 @@ public abstract class BaseFragment extends Fragment {
         mUnbinder.unbind();
     }
 
-//    @Override
+    //    @Override
 //    public void onDestroy() {
 //        super.onDestroy();
 //        RefWatcher refWatcher = App.getRefWatcher(getActivity());
 //        refWatcher.watch(this);
 //    }
+    public void hiddenInputType() {
+        View view = getActivity().getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 }

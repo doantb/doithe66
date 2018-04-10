@@ -7,6 +7,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
+import vn.doithe66.doithe66.Utils.ConfigJson;
 import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.Utils.SharedPrefs;
 import vn.doithe66.doithe66.config.ConfigRetrofitApi;
@@ -27,12 +28,12 @@ public class LoginIteratorImpl implements LoginInterator {
 
     @Override
     public void loginGmail(String token, String displayName, String pass, String email,
-            OnLoginFinishedListener listener) {
+                           OnLoginFinishedListener listener) {
         loginWithGG(token, displayName, pass, email, listener);
     }
 
-    private void loginAcountMuathe(final String email, String password,
-            final OnLoginFinishedListener listener) {
+    private void loginAcountMuathe(final String email, final String password,
+                                   final OnLoginFinishedListener listener) {
         boolean error = false;
         if (TextUtils.isEmpty(email)) {
             listener.onUsernameError();
@@ -49,7 +50,7 @@ public class LoginIteratorImpl implements LoginInterator {
                     .enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            if (response != null) {
+                            if (response.body() != null) {
                                 final String token = response.body();
                                 if (token != null) {
                                     Log.e("token = ", token);
@@ -61,8 +62,11 @@ public class LoginIteratorImpl implements LoginInterator {
                                             .enqueue(new Callback<UserInfo>() {
                                                 @Override
                                                 public void onResponse(Call<UserInfo> call,
-                                                        Response<UserInfo> response) {
+                                                                       Response<UserInfo> response) {
                                                     if (response.body() != null) {
+                                                        UserInfo userInfo = response.body();
+                                                        userInfo.setPassWord(password);
+                                                        saveUserInfo(userInfo);
                                                         if (response.body().getName() != null) {
                                                             saveEmail(email);
                                                             saveName(response.body().getName());
@@ -75,7 +79,7 @@ public class LoginIteratorImpl implements LoginInterator {
 
                                                 @Override
                                                 public void onFailure(Call<UserInfo> call,
-                                                        Throwable t) {
+                                                                      Throwable t) {
                                                 }
                                             });
                                 }
@@ -92,25 +96,51 @@ public class LoginIteratorImpl implements LoginInterator {
         }
     }
 
+    private void saveUserInfo(UserInfo userInfo) {
+        SharedPrefs.getInstance().put(Constant.USER_ACCOUNT, ConfigJson.setUserAccount(userInfo));
+    }
+
     private void loginWithGG(final String token, final String fullName, String passWord,
-            final String email, final OnLoginFinishedListener listener) {
+                             final String email, final OnLoginFinishedListener listener) {
         Retrofit retrofit = ConfigRetrofitApi.getInstance();
-        //
-        //        Log.d("token", token + "");
-        //        Log.d("token", email + "");
-        //        Log.d("token", passWord + "");
-        //        Log.d("token", fullName + "");
         retrofit.create(InterfaceAPI.class)
                 .loginWithGoogle(token, fullName, passWord)
                 .enqueue(new Callback<RegisterMDResult>() {
                     @Override
                     public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
+                                           Response<RegisterMDResult> response) {
                         if (response.body() != null) {
                             RegisterMDResult mdResult = response.body();
                             saveEmail(email);
                             saveName(fullName);
                             saveAccessToken(mdResult.getToken());
+                            if (mdResult.getRepcode() == 1) {
+                                Retrofit retrofit = ConfigRetrofitApi.getInstance(token);
+                                retrofit.create(InterfaceAPI.class)
+                                        .getUserInfo()
+                                        .enqueue(new Callback<UserInfo>() {
+                                            @Override
+                                            public void onResponse(Call<UserInfo> call,
+                                                                   Response<UserInfo> response) {
+                                                if (response.body() != null) {
+                                                    UserInfo userInfo = response.body();
+                                                    saveUserInfo(userInfo);
+                                                    if (response.body().getName() != null) {
+                                                        saveEmail(email);
+                                                        saveName(response.body().getName());
+                                                        listener.onSuccess();
+                                                    } else {
+//                                                        listener.onErrorLogin("");
+                                                    }
+                                                }
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<UserInfo> call,
+                                                                  Throwable t) {
+                                            }
+                                        });
+                            }
                             listener.onChooseRepcode(mdResult.getRepcode());
                         }
                     }

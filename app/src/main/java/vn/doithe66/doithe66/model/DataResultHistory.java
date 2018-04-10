@@ -1,12 +1,15 @@
 package vn.doithe66.doithe66.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Dell Precision on 12/20/2017.
  */
 
-public class DataResultHistory {
+public class DataResultHistory implements Parcelable {
     @SerializedName("Type")
     private String type;
     @SerializedName("Email")
@@ -101,4 +104,46 @@ public class DataResultHistory {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.type);
+        dest.writeString(this.email);
+        dest.writeString(this.strPrice);
+        dest.writeString(this.strAmount);
+        dest.writeString(this.createDate);
+        dest.writeString(this.status);
+        dest.writeString(this.phone);
+        dest.writeString(this.telcoCode);
+        dest.writeString(this.discount);
+    }
+
+    protected DataResultHistory(Parcel in) {
+        this.type = in.readString();
+        this.email = in.readString();
+        this.strPrice = in.readString();
+        this.strAmount = in.readString();
+        this.createDate = in.readString();
+        this.status = in.readString();
+        this.phone = in.readString();
+        this.telcoCode = in.readString();
+        this.discount = in.readString();
+    }
+
+    public static final Parcelable.Creator<DataResultHistory> CREATOR = new Parcelable.Creator<DataResultHistory>() {
+        @Override
+        public DataResultHistory createFromParcel(Parcel source) {
+            return new DataResultHistory(source);
+        }
+
+        @Override
+        public DataResultHistory[] newArray(int size) {
+            return new DataResultHistory[size];
+        }
+    };
 }

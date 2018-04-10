@@ -17,21 +17,21 @@ import vn.doithe66.doithe66.model.RegisterMDResult;
 public class RegisterInteratorImpl implements RegisterInterator {
 
     @Override
-    public void register(String user, String phone, String email, String pass,
-            OnRegisterFinishedListener listener) {
-        registerRetrofit(user, phone, email, pass, listener);
+    public void register(String user, String phone, String email, String pass, String passlv2,
+                         OnRegisterFinishedListener listener) {
+        registerRetrofit(user, phone, email, pass, passlv2, listener);
     }
 
-    private void registerRetrofit(String user, String phone, String email, String pass,
-            final OnRegisterFinishedListener listener) {
+    private void registerRetrofit(String user, String phone, String email, String pass, String passlv2,
+                                  final OnRegisterFinishedListener listener) {
         Retrofit retrofit = ConfigRetrofitApi.getInstance();
         retrofit.create(InterfaceAPI.class)
-                .register(user, phone, email, pass)
+                .register(email, user, phone, email, pass, passlv2, "", "", "", "", "", "")
                 .enqueue(new Callback<RegisterMDResult>() {
                     @Override
                     public void onResponse(Call<RegisterMDResult> call,
-                            Response<RegisterMDResult> response) {
-                        Log.e("RegisterMDResult ", response.body().toString());
+                                           Response<RegisterMDResult> response) {
+//                        Log.e("RegisterMDResult ", response.body().toString());
                         if (response.body() != null) {
                             listener.onSuccess(response.body().getMessage());
                         }

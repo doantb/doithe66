@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
@@ -19,14 +18,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import com.github.javiersantos.appupdater.AppUpdater;
 import com.github.javiersantos.appupdater.enums.Display;
+
 import java.util.ArrayList;
 
+import vn.doithe66.doithe66.Utils.AutoLogin;
 import vn.doithe66.doithe66.Utils.CheckInternet;
+import vn.doithe66.doithe66.Utils.ConfigJson;
 import vn.doithe66.doithe66.Utils.Constant;
 import vn.doithe66.doithe66.Utils.SharedPrefs;
 import vn.doithe66.doithe66.Utils.Utils;
@@ -41,7 +45,7 @@ import vn.doithe66.doithe66.fragment.ProfileFragment;
 import vn.doithe66.doithe66.model.ItemCard;
 import vn.doithe66.doithe66.model.ItemNav;
 import vn.doithe66.doithe66.model.UserInfo;
-import vn.doithe66.doithe66.networking.TaskGetVersion;
+//import vn.doithe66.doithe66.networking.TaskGetLogin;
 import vn.doithe66.doithe66.presenter.HomeActivityPresenter;
 import vn.doithe66.doithe66.presenter.HomeActivityPresenterImpl;
 import vn.doithe66.doithe66.view.HomeActivityView;
@@ -88,8 +92,16 @@ public class HomeActivity extends BaseActivity
         if (!CheckInternet.haveNetworkConnection(this)) {
             showDialogInternet();
         }
-        ButterKnife.bind(this);
         token = SharedPrefs.getInstance().get(Constant.ACCESS_TOKEN, String.class);
+        if (ConfigJson.getUserAccount(SharedPrefs.getInstance().get(Constant.USER_ACCOUNT, String.class)) != null) {
+            mUserInfo = ConfigJson.getUserAccount(SharedPrefs.getInstance().get(Constant.USER_ACCOUNT, String.class));
+            AutoLogin autoLogin = new AutoLogin(this);
+            if (!autoLogin.bLogin) {
+                autoLogin.login(mUserInfo.getPassWord());
+            }
+        } else {
+            startActivity(LoginActivity.class);
+        }
         startIntroAnimation();
         mHomeActivityPresenter = new HomeActivityPresenterImpl(this, this);
         mHomeActivityPresenter.checkToken(token, mItemCards);
@@ -106,13 +118,13 @@ public class HomeActivity extends BaseActivity
 
     @Override
     protected void initVariables(Bundle savedInstanceState) {
-        checkUpdate();
+//        checkUpdate();
         //        mStringStack = new Stack<>();
     }
 
     private void showDialogInternet() {
         AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-        builder.setTitle("Mua thẻ 24h !")
+        builder.setTitle("Đổi thẻ 66 !")
                 .setCancelable(false)
                 .setMessage("Vui lòng kiểm tra kết nối Wifi hoặc 3G")
                 .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
@@ -213,7 +225,7 @@ public class HomeActivity extends BaseActivity
         //        mHomeImgNotification.setVisibility(View.VISIBLE);
         mItemCards = new ArrayList<>();
         mItemCards.addAll(itemCards);
-        HomeFragment homeFragment = HomeFragment.newInstance(token, itemCards);
+        HomeFragment homeFragment = HomeFragment.newInstance(token, itemCards, mUserInfo);
         loadFragment(homeFragment);
         //        mStringStack.push("Trang chủ");
     }
@@ -226,20 +238,13 @@ public class HomeActivity extends BaseActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-
-    }
-
-    @Override
     public void onClickItemNav(ItemNav itemNav, int position) {
         //        mStringStack.push(itemNav.getTitle());
         mHomeActivityPresenter.onLoadFragment(itemNav);
         switch (position) {
             case 0:
                 mHomeImgNotification.setVisibility(View.VISIBLE);
-                loadFragment(HomeFragment.newInstance("", mItemCards));
+                loadFragment(HomeFragment.newInstance("", mItemCards, mUserInfo));
                 break;
             case 1:
                 mHomeActivityPresenter.onLoadFragmentSuccess();
@@ -324,7 +329,7 @@ public class HomeActivity extends BaseActivity
 
     public void setDialogQuit() {
         android.app.AlertDialog.Builder dialog = new android.app.AlertDialog.Builder(this);
-        dialog.setTitle("Mua thẻ 123");
+        dialog.setTitle("Đổi thẻ 66");
         dialog.setMessage("Bạn có muốn thoát ứng dụng");
         dialog.setCancelable(true);
         dialog.setPositiveButton("Quay lại", new DialogInterface.OnClickListener() {
@@ -344,27 +349,27 @@ public class HomeActivity extends BaseActivity
     }
 
     private void checkUpdate() {
-        TaskGetVersion taskGetVersion = new TaskGetVersion(this.getPackageName()) {
-            @Override
-            protected void onPostExecute(String onlineVersion) {
-                super.onPostExecute(onlineVersion);
-                if (onlineVersion != null && !onlineVersion.isEmpty()) {
-                    String currentVersion = null;
-                    try {
-                        currentVersion =
-                                getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-                    } catch (PackageManager.NameNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    if (Float.valueOf(currentVersion) < Float.valueOf(onlineVersion)) {
-
-                        //show dialog
-                        setDialogUpdate();
-                    }
-                }
-            }
-        };
-        taskGetVersion.execute();
+//        TaskGetLogin taskGetVersion = new TaskGetLogin(this.getPackageName()) {
+//            @Override
+//            protected void onPostExecute(String onlineVersion) {
+//                super.onPostExecute(onlineVersion);
+//                if (onlineVersion != null && !onlineVersion.isEmpty()) {
+//                    String currentVersion = null;
+//                    try {
+//                        currentVersion =
+//                                getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+//                    } catch (PackageManager.NameNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//                    if (Float.valueOf(currentVersion) < Float.valueOf(onlineVersion)) {
+//
+//                        //show dialog
+//                        setDialogUpdate();
+//                    }
+//                }
+//            }
+//        };
+//        taskGetVersion.execute();
     }
 
     private void setDialogUpdate() {
